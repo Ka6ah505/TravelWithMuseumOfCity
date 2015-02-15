@@ -10,7 +10,8 @@ package
 	[Frame(factoryClass="Preloader")]
 	public class Main extends Sprite 
 	{
-
+		
+		var menu:MainMenu;
 		public function Main() 
 		{
 			if (stage) init();
@@ -21,6 +22,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			menu = new MainMenu();
+			addChild(menu);
 		}
 
 	}
