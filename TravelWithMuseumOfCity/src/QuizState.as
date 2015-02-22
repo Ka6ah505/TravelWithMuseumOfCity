@@ -102,7 +102,7 @@ package
 				readNodes(element);
 			}*/
 			content.push(new QuestionsAndAnswer("1", "q.1", "q2.1", "q3.1", "q4.1", 2));
-			/*content.push(new QuestionsAndAnswer("2", "q1.2", "q2.2", "q3.2", "q4.2", 2));
+			content.push(new QuestionsAndAnswer("2", "q1.2", "q2.2", "q3.2", "q4.2", 2));
 			content.push(new QuestionsAndAnswer("3", "q1.3", "q2.3", "q3.3", "q4.3", 2));
 			content.push(new QuestionsAndAnswer("4", "q1.4", "q2.4", "q3.4", "q4.4", 2));
 			content.push(new QuestionsAndAnswer("5", "q1.5", "q2.5", "q3.5", "q4.5", 2));
@@ -111,7 +111,7 @@ package
 			content.push(new QuestionsAndAnswer("8", "q1.8", "q2.8", "q3.8", "q4.8", 2));
 			content.push(new QuestionsAndAnswer("9", "q1.9", "q2.9", "q3.9", "q4.9", 2));
 			content.push(new QuestionsAndAnswer("10", "q1.10", "q2.10", "q3.10", "q4.10", 2));
-			content.push(new QuestionsAndAnswer("11", "q1.11", "q2.11", "q3.11", "q4.11", 2));*/
+			content.push(new QuestionsAndAnswer("11", "q1.11", "q2.11", "q3.11", "q4.11", 2));
 			/*for each (var element:XML in node.elements()) {
 				content.push(new QuestionsAndAnswer(
 				String(element.attributes()[1]),
