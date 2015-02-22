@@ -6,14 +6,14 @@ package
 	 */
 	public class QuestionsAndAnswer 
 	{
-		var question:String;
-		var answerA:String;
-		var answerB:String;
-		var answerC:String;
-		var answerD:String;
-		var trueAnswer:int;
+		private var question:String;
+		private var answerA:String;
+		private var answerB:String;
+		private var answerC:String;
+		private var answerD:String;
+		private var trueAnswer:int;
 		
-		public function QuestionsAndAnswer(question, answerA, answerB, answerC, answerD, trueAnswer) 
+		public function QuestionsAndAnswer(question:String, answerA:String, answerB:String, answerC:String, answerD:String, trueAnswer:int) 
 		{
 			this.question = question;
 			this.answerA = answerA;

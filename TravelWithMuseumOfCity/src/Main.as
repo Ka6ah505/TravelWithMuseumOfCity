@@ -10,8 +10,7 @@ package
 	[Frame(factoryClass="Preloader")]
 	public class Main extends Sprite 
 	{
-		
-		var menu:MainMenu;
+		private var menu:MainMenu;
 		public function Main() 
 		{
 			if (stage) init();

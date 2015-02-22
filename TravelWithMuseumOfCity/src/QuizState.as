@@ -6,58 +6,46 @@ package
 	import flash.display.SimpleButton;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import flash.text.TextFormat;
-	
+	import flash.text.TextFormat;	
 	/**
 	 * ...
 	 * @author sega
 	 */
 	public class QuizState extends Sprite 
 	{
-		var tf:TextField = new TextField();
-		var answerButtonA:Button;
-		var answerButtonB:Button;
-		var answerButtonC:Button;
-		var answerButtonD:Button;
-		var numberQuestion:int = 0;
+		private var tf:TextField = new TextField();
+		private var answerButtonA:Button;
+		private var answerButtonB:Button;
+		private var answerButtonC:Button;
+		private var answerButtonD:Button;
+		private var numberQuestion:int = 0;
+		public var dbconn:DbConnect;
 		
 		//public var content:Array = [];
-		public var content:Vector.<QuestionsAndAnswer> = new Vector.<QuestionsAndAnswer>;
-		public function QuizState() 
+		public var content:Vector.<QuestionsAndAnswer>; //= new Vector.<QuestionsAndAnswer>;
+		
+		public function QuizState(c:Vector.<QuestionsAndAnswer>) 
 		{
 			super();
-			writeArray();
 			init();
 			initButtons();
-			initQuestion();
 		}
 		
-		private function initQuestion():void 
-		{
+		private function initQuestion():void {
 			tf.text = content[numberQuestion].getQuestion();			
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
 			answerButtonC.label = content[numberQuestion].getAnswerC();
 			answerButtonD.label = content[numberQuestion].getAnswerD();
-		}
-		
-		private function writeArray():void 
-		{
-			var i:int;
-			for (i = 0; i < 4; i++ )
-				content.push(createUnitQuestion(i));
-		}
-		
-		private function createUnitQuestion(i):QuestionsAndAnswer
-		{	
-			return new QuestionsAndAnswer("Вопрос номер " + i, "ответА "+ i, "ответВ "+ i, "ответС "+ i, "ответД "+ i, i );
+			numberQuestion++;
 		}
 		
 		public function init():void {
 			var bg:backgroundGame = new backgroundGame();
 			tf.x = 20;
 			tf.y = 30;
-			tf.height = 30;			
+			tf.height = 30;
+			tf.width = 300;
 			addChild(bg);
 			addChild(tf);
 		}
@@ -93,9 +81,8 @@ package
 			answerButtonD.addEventListener(MouseEvent.CLICK, handlerButton);
 		}
 		
-		private function handlerButton(Event:MouseEvent):void {
+		private function handlerButton(Event:MouseEvent):void {	
 			initQuestion();
-			numberQuestion++;
 		}
 		
 	}

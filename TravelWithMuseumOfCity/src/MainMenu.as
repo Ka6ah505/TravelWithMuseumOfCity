@@ -30,8 +30,10 @@ package
 		}
 		
 		private function startQuiz(event:MouseEvent):void {
-			this.removeChildren();
-			var q:QuizState = new QuizState();
+			//this.removeChildren();
+			var dbconn:DbConnect = new DbConnect();
+			var conntent:Vector.<QuestionsAndAnswer> = dbconn.getContent();
+			var q:QuizState = new QuizState(conntent);
 			this.addChild(q);
 		}
 		

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+<myXml attribute1="My attribute" attribute2="My attribute1.1">dsad
+</myXml>
+<myXml attribute1="My attribute1">
+</myXml>
+</data>
