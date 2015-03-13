@@ -6,7 +6,14 @@ package
 	import flash.display.SimpleButton;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import flash.text.TextFormat;	
+	import flash.text.TextFormat;
+	
+	import flash.xml.*;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.net.URLLoaderDataFormat;
 	/**
 	 * ...
 	 * @author sega
@@ -19,19 +26,57 @@ package
 		private var answerButtonC:Button;
 		private var answerButtonD:Button;
 		private var numberQuestion:int = 0;
-		public var dbconn:DbConnect;
-		
+		public var loader:URLLoader = new URLLoader();
+		public var numbers:Array = new Array();
+		public var xml:XML;
 		public var content:Array = [];
-		//public var content:Vector.<QuestionsAndAnswer> = new Vector.<QuestionsAndAnswer>;
 		
 		public function QuizState() 
 		{
 			super();
-			dbconn = new DbConnect();
-			content = dbconn.getContent();
 			init();
 			initButtons();
+			loader.dataFormat = URLLoaderDataFormat.TEXT;
+			loader.load(new URLRequest("quest.xml"));	
+			loader.addEventListener(Event.COMPLETE, loadXML);
+		}
+		
+		// загрузка xml файла
+		private function loadXML(e:Event):void {
+			try {
+				xml = new XML(loader.data);
+				parserXML();
+			} catch(e:TypeError) {}
+		}
+		
+		// парсинг и заполнение массива с вопросами
+		private function parserXML():void {
+			var data:XMLList = xml.children();
+			generateTenRandomQuestion(data.length());			
+			/////////////////// взять numbers и пробежать по всем значениям, в свою очередь значения подставлять в child("quest")[?]
+			for (var i:int = 0; i < 10; i++) {
+				var j:int = numbers[i];
+				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1]+" №"+content.length, 
+													xml.child("quest")[j].attributes()[2], 
+													xml.child("quest")[j].attributes()[3], 
+													xml.child("quest")[j].attributes()[4], 
+													xml.child("quest")[j].attributes()[5],
+													xml.child("quest")[j].attributes()[6]
+													)
+							);
+			}
 			initQuestion();
+		}
+		
+		// генерирование номеров вопросов для викторины
+		public function generateTenRandomQuestion(length:int):void {
+			for (var i:int = 0; i < length; i++) numbers[i] = i;
+			numbers.sort(randomSort);
+			numbers.splice(10);
+		}
+		// перемешиванте
+		public function randomSort(elementA:Object, elementB:Object):Number {
+			return Math.random() - .5;
 		}
 		
 		public function initQuestion():void {
