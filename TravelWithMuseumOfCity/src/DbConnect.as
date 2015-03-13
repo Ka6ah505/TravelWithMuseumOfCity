@@ -1,13 +1,11 @@
 package 
 {
-	import flash.display.Sprite;
 	import flash.xml.*;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
+	import flash.net.URLLoaderDataFormat;
 	
 	/**
 	 * ...
@@ -15,60 +13,68 @@ package
 	 */
 	public class DbConnect
 	{	
-		public var externalXML:XML;    
+		public var xml:XML;
+		
         public var loader:URLLoader = new URLLoader();
-		public var content:Vector.<QuestionsAndAnswer> = new Vector.<QuestionsAndAnswer>;
+		//массив вопросов
+		public var content:Array = new Array();
+		//public var content:Vector.<QuestionsAndAnswer> = new Vector.<QuestionsAndAnswer>;
+		// массив номеров вопросов
 		public var numbers:Array = new Array();
-		public var score:int = 0;
 				
 		public function DbConnect() 
 		{
-			var request:URLRequest = new URLRequest("quest.xml");
-			try {
-                loader.load(request);
-            }
-            catch (error:SecurityError) {
-                trace("A SecurityError has occurred.");
-            }
-            loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
-            loader.addEventListener(Event.COMPLETE, loaderCompleteHandler);
+			// ссылка на хml файл
+			loader.dataFormat = URLLoaderDataFormat.TEXT;
+			loader.load(new URLRequest("quest.xml"));	
+			loader.addEventListener(Event.COMPLETE, loadXML);
+			content.push(new QuestionsAndAnswer("question", "answer1", "answer2", "answer3", "answer4", 4));
 		}
 		
-		public function loaderCompleteHandler(event:Event):void {
+		private function loadXML(e:Event):void {
 			try {
-				externalXML = new XML(loader.data);				
-				generateTenRandomQuestion(externalXML.elements().length());
-			} catch (e:TypeError) {
-				trace("Could not parse the XML file.");
-			}
-        }
+				xml = new XML(loader.data);
+				parserXML();
+			} catch(e:TypeError) {}
+		}
 		
+		private function parserXML():void {
+			/// ??????????
+			var data:XMLList = xml.children();
+			generateTenRandomQuestion(data.length());
+			
+			/////////////////// взять numbers и пробежать по всем значениям, в свою очередь значения подставлять в child("quest")[?]
+			for (var i:int = 0; i < 10; i++) {
+				//var q:XML = data[i];
+				var j:int = numbers[i];
+				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1]+" №"+i, 
+													xml.child("quest")[j].attributes()[2], 
+													xml.child("quest")[j].attributes()[3], 
+													xml.child("quest")[j].attributes()[4], 
+													xml.child("quest")[j].attributes()[5],
+													xml.child("quest")[j].attributes()[6]
+													)
+							);
+			}
+		}
+		
+		// генерирование номеров вопросов для викторины
 		public function generateTenRandomQuestion(length:int):void {
 			for (var i:int = 0; i < length; i++) numbers[i] = i;
 			numbers.sort(randomSort);
 			numbers.splice(10);
-			for (var j:int = 0; j < numbers.length; j++) 
-			readQuestionInFile();
 		}
-		
-		public function readQuestionInFile():void {
-			readNodes(externalXML);
-		}
-		
-		public function readNodes(node:XML):void {
-			for each (var element:XML in node.elements()) {
-				if (element.attributes()[0] == numbers[score]) {
-					content.push(new QuestionsAndAnswer(element.attributes()[1],
-					element.attributes()[2], element.attributes()[3], element.attributes()[4],
-					element.attributes()[5], element.attributes()[6]));
-					score++;
-				}
-				readNodes(element);
-			}			
-        }
 		
 		public function randomSort(elementA:Object, elementB:Object):Number {
 			return Math.random() - .5;
+		}
+		
+		/*public function getContent():Vector.<QuestionsAndAnswer> {
+			return content;
+		}*/
+		
+		public function getContent():Array {
+			return content;
 		}
 
         public function errorHandler(e:IOErrorEvent):void {

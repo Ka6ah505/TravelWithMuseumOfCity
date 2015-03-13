@@ -21,23 +21,25 @@ package
 		private var numberQuestion:int = 0;
 		public var dbconn:DbConnect;
 		
-		//public var content:Array = [];
-		public var content:Vector.<QuestionsAndAnswer>; //= new Vector.<QuestionsAndAnswer>;
+		public var content:Array = [];
+		//public var content:Vector.<QuestionsAndAnswer> = new Vector.<QuestionsAndAnswer>;
 		
-		public function QuizState(c:Vector.<QuestionsAndAnswer>) 
+		public function QuizState() 
 		{
 			super();
+			dbconn = new DbConnect();
+			content = dbconn.getContent();
 			init();
 			initButtons();
+			initQuestion();
 		}
 		
-		private function initQuestion():void {
+		public function initQuestion():void {
 			tf.text = content[numberQuestion].getQuestion();			
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
 			answerButtonC.label = content[numberQuestion].getAnswerC();
 			answerButtonD.label = content[numberQuestion].getAnswerD();
-			numberQuestion++;
 		}
 		
 		public function init():void {
@@ -82,6 +84,7 @@ package
 		}
 		
 		private function handlerButton(Event:MouseEvent):void {	
+			numberQuestion++;
 			initQuestion();
 		}
 		
