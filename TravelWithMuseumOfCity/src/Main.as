@@ -2,7 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
-
+	
 	/**
 	 * ...
 	 * @author sega
@@ -21,10 +21,10 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			
 			menu = new MainMenu();
 			addChild(menu);
 		}
-
 	}
 
 }

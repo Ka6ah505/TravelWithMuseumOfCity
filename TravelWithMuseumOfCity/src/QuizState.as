@@ -30,6 +30,7 @@ package
 		public var numbers:Array = new Array();
 		public var xml:XML;
 		public var content:Array = [];
+		public var score:int = 0;
 		
 		public function QuizState() 
 		{
@@ -130,11 +131,21 @@ package
 			answerButtonD.addEventListener(MouseEvent.CLICK, handlerButton);
 		}
 		
-		private function handlerButton(Event:MouseEvent):void {	
+		private function handlerButton(e:MouseEvent):void {	
 			numberQuestion++;
+			if (e.target == answerButtonA && content[numberQuestion - 1].getTrueAnswer() == 1) {
+				score = score + 1;
+			} else if (e.target == answerButtonB && content[numberQuestion - 1].getTrueAnswer() == 2) {
+				score = score + 1;
+			} else if (e.target == answerButtonC && content[numberQuestion - 1].getTrueAnswer() == 3) {
+				score = score + 1;
+			} else if (e.target == answerButtonD && content[numberQuestion - 1].getTrueAnswer() == 4) {
+				score = score + 1;
+			}
+			
 			if (numberQuestion == 10) {
 				this.removeChildren();
-				var rq:QuizResult = new QuizResult(4);
+				var rq:QuizResult = new QuizResult(score);
 				this.addChild(rq);
 			}
 			initQuestion();

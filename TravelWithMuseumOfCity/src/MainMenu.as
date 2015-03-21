@@ -31,8 +31,9 @@ package
 		
 		private function startQuiz(event:MouseEvent):void {
 			this.removeChildren();
-			var q:QuizState = new QuizState();
-			this.addChild(q);
+			addChild(new Splash());
+			//var q:QuizState = new QuizState();
+			//this.addChild(q);
 		}
 		
 		private function startQuestions(event:MouseEvent):void {
