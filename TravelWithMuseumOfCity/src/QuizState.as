@@ -37,6 +37,8 @@ package
 			init();
 			initButtons();
 			loader.dataFormat = URLLoaderDataFormat.TEXT;
+			//loader.load(new URLRequest("https://drive.google.com/file/d/0B930L_kJddOIRk1sVHlHVGF3SFE/view?usp=sharing"));
+			
 			loader.load(new URLRequest("quest.xml"));	
 			loader.addEventListener(Event.COMPLETE, loadXML);
 		}
@@ -130,6 +132,11 @@ package
 		
 		private function handlerButton(Event:MouseEvent):void {	
 			numberQuestion++;
+			if (numberQuestion == 10) {
+				this.removeChildren();
+				var rq:QuizResult = new QuizResult(4);
+				this.addChild(rq);
+			}
 			initQuestion();
 		}
 		
