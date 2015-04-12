@@ -1,5 +1,6 @@
 package 
 {
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -7,7 +8,7 @@ package
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	
+	import flash.system.Capabilities;
 	import flash.xml.*;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
@@ -20,36 +21,106 @@ package
 	 */
 	public class QuizState extends Sprite 
 	{
+		private var bg:backgroundGame;
 		private var tf:TextField = new TextField();
+		private var tfCount:TextField = new TextField();
 		private var answerButtonA:Button;
 		private var answerButtonB:Button;
 		private var answerButtonC:Button;
 		private var answerButtonD:Button;
+		private var exitQuizState:Button;
 		private var numberQuestion:int = 0;
 		public var loader:URLLoader = new URLLoader();
 		public var numbers:Array = new Array();
 		public var xml:XML;
 		public var content:Array = [];
 		public var score:int = 0;
+		public var massImage:Array = [];
+		public var massBool:Array = new Array(true, true, true, true, true, true, true, true, true, true);
 		
 		public function QuizState() 
 		{
 			super();
 			init();
+			initSelectQuestion();
 			initButtons();
+			
+			loader.addEventListener(Event.COMPLETE, loadXML);
+			
 			loader.dataFormat = URLLoaderDataFormat.TEXT;
+			
 			//loader.load(new URLRequest("https://drive.google.com/file/d/0B930L_kJddOIRk1sVHlHVGF3SFE/view?usp=sharing"));
 			
 			loader.load(new URLRequest("quest.xml"));	
-			loader.addEventListener(Event.COMPLETE, loadXML);
+			
+		}
+		
+		private function initSelectQuestion():void {
+			
+			for (var i:int = 0; i <= 9; i++ ) {
+				var l:Loader = new Loader();
+				l.load(new URLRequest("def.png"));
+				l.x = 50 * i + 50;
+				l.y = 200;
+				//l.addEventListener(MouseEvent.CLICK, onSelectQuestion);
+				massImage[i] = l;
+				massImage[i].addEventListener(MouseEvent.CLICK, onSelectQuestion);
+			}
+			
+			for (var ii:int = 0; ii <= 9; ii++ ) {
+				addChild(massImage[ii]);
+			}
+			
+		}
+		
+		private function onSelectQuestion(e:MouseEvent):void {
+			switch(e.target) {
+				case massImage[0]:
+					numberQuestion = 0;
+					break;
+				case massImage[1]:
+					numberQuestion = 1;
+					break;
+				case massImage[2]:
+					numberQuestion = 2;
+					break;
+				case massImage[3]:
+					numberQuestion = 3;
+					break;
+				case massImage[4]:
+					numberQuestion = 4;
+					break;
+				case massImage[5]:
+					numberQuestion = 5;
+					break;
+				case massImage[6]:
+					numberQuestion = 6;
+					break;
+				case massImage[7]:
+					numberQuestion = 7;
+					break;
+				case massImage[8]:
+					numberQuestion = 8;
+					break;
+				case massImage[9]:
+					numberQuestion = 9;
+					break;
+				default:
+					break;
+			}
+			initQuestion();
+			
 		}
 		
 		// загрузка xml файла
 		private function loadXML(e:Event):void {
 			try {
 				xml = new XML(loader.data);
+				//xml = new XML(e.target.data);
 				parserXML();
-			} catch(e:TypeError) {}
+			} catch(e:TypeError) {
+				trace(e.message);
+			}
 		}
 		
 		// парсинг и заполнение массива с вопросами
@@ -59,7 +130,7 @@ package
 			/////////////////// взять numbers и пробежать по всем значениям, в свою очередь значения подставлять в child("quest")[?]
 			for (var i:int = 0; i < 10; i++) {
 				var j:int = numbers[i];
-				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1]+" №"+content.length, 
+				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1], 
 													xml.child("quest")[j].attributes()[2], 
 													xml.child("quest")[j].attributes()[3], 
 													xml.child("quest")[j].attributes()[4], 
@@ -68,9 +139,9 @@ package
 													)
 							);
 			}
+			trace(content.length);
 			initQuestion();
 		}
-		
 		// генерирование номеров вопросов для викторины
 		public function generateTenRandomQuestion(length:int):void {
 			for (var i:int = 0; i < length; i++) numbers[i] = i;
@@ -83,7 +154,20 @@ package
 		}
 		
 		public function initQuestion():void {
-			tf.text = content[numberQuestion].getQuestion();			
+			var format:TextFormat = new TextFormat();
+            format.font = "Verdana";
+            format.color = 0xFF0000;
+            format.size = 20;
+            format.underline = true;
+			tf.defaultTextFormat = format;
+			tfCount.width = 200;
+			tfCount.x = bg.width;
+			tfCount.defaultTextFormat = format;
+			var tmp:int = numberQuestion + 1;
+			tfCount.text = "Вопрос №" + tmp// +"" + "/10";
+			
+			trace("quest #"+numberQuestion);
+			tf.text = content[numberQuestion].getQuestion();		
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
 			answerButtonC.label = content[numberQuestion].getAnswerC();
@@ -91,13 +175,17 @@ package
 		}
 		
 		public function init():void {
-			var bg:backgroundGame = new backgroundGame();
-			tf.x = 20;
-			tf.y = 30;
+			bg = new backgroundGame();
+			bg.width = Capabilities.screenResolutionY;
+			bg.height = Capabilities.screenResolutionY;
+			bg.x = bg.width / 3;
+			tf.x = 70 + bg.width / 3;
+			tf.y = 70;
 			tf.height = 30;
 			tf.width = 300;
 			addChild(bg);
 			addChild(tf);
+			addChild(tfCount);
 		}
 		
 		private function initButtons():void {
@@ -105,50 +193,97 @@ package
 			answerButtonB = new Button();
 			answerButtonC = new Button();
 			answerButtonD = new Button();
+			exitQuizState = new Button();
 			addChild(answerButtonA);
 			addChild(answerButtonB);
 			addChild(answerButtonC);
 			addChild(answerButtonD);
-			answerButtonA.x = 50;
-			answerButtonA.y = 300;
+			addChild(exitQuizState);
+			answerButtonA.x = 50 + bg.width / 3;
+			answerButtonA.y = bg.width / 2;
 			answerButtonA.height = 30;
-			answerButtonA.width = 200;
-			answerButtonB.x = 300;
-			answerButtonB.y = 300;
+			//answerButtonA.width = 200;
+			answerButtonA.width = bg.width / 3;
+			answerButtonB.x = bg.width - 50;//300 + bg.width / 3;
+			answerButtonB.y = bg.width / 2;
 			answerButtonB.height = 30;
-			answerButtonB.width = 200;
-			answerButtonC.x = 50;
-			answerButtonC.y = 340;
+			answerButtonB.width = bg.width / 3;
+			answerButtonC.x = 50 + bg.width / 3;
+			answerButtonC.y = bg.width / 2 + 40;
 			answerButtonC.height = 30;
-			answerButtonC.width = 200;
-			answerButtonD.x = 300;
-			answerButtonD.y = 340;
+			answerButtonC.width = bg.width / 3;
+			answerButtonD.x = bg.width - 50;;
+			answerButtonD.y = bg.width / 2 + 40;
 			answerButtonD.height = 30;
-			answerButtonD.width = 200;
+			answerButtonD.width = bg.width / 3;
+			exitQuizState.width = bg.width / 3.5;
+			exitQuizState.height = 30;
+			exitQuizState.label = "Завершить тест";
+			exitQuizState.x = bg.width / 2 + exitQuizState.width / 2;
+			exitQuizState.y  = bg.height - 150;
 			answerButtonA.addEventListener(MouseEvent.CLICK, handlerButton);
 			answerButtonB.addEventListener(MouseEvent.CLICK, handlerButton);
 			answerButtonC.addEventListener(MouseEvent.CLICK, handlerButton);
 			answerButtonD.addEventListener(MouseEvent.CLICK, handlerButton);
+			exitQuizState.addEventListener(MouseEvent.CLICK, handlerButton);
 		}
 		
-		private function handlerButton(e:MouseEvent):void {	
-			numberQuestion++;
-			if (e.target == answerButtonA && content[numberQuestion - 1].getTrueAnswer() == 1) {
+		private function handlerButton(e:MouseEvent):void {
+		// начисление баллов
+			if (e.target == answerButtonA && content[numberQuestion].getTrueAnswer() == 1) {
 				score = score + 1;
-			} else if (e.target == answerButtonB && content[numberQuestion - 1].getTrueAnswer() == 2) {
+			} else if (e.target == answerButtonB && content[numberQuestion].getTrueAnswer() == 2) {
 				score = score + 1;
-			} else if (e.target == answerButtonC && content[numberQuestion - 1].getTrueAnswer() == 3) {
+			} else if (e.target == answerButtonC && content[numberQuestion].getTrueAnswer() == 3) {
 				score = score + 1;
-			} else if (e.target == answerButtonD && content[numberQuestion - 1].getTrueAnswer() == 4) {
+			} else if (e.target == answerButtonD && content[numberQuestion].getTrueAnswer() == 4) {
 				score = score + 1;
 			}
+		// изменение картинки
+			massImage[numberQuestion].removeEventListener(MouseEvent.CLICK, onSelectQuestion);
+			massImage[numberQuestion].alpha = 0.1;
+			massBool[numberQuestion] = false;
+		/// НУЖНА проверка
 			
-			if (numberQuestion == 10) {
+			var flag:Boolean = checkNext();
+			checkFull(flag);
+		
+		
+			//numberQuestion = numberQuestion + 1;
+			
+			//if (numberQuestion >= 10 || e.target == exitQuizState) {
+			if (e.target == exitQuizState) {
 				this.removeChildren();
 				var rq:QuizResult = new QuizResult(score);
 				this.addChild(rq);
+			} else {
+				initQuestion();
+			}			
+		}
+		
+		private function checkFull(flag:Boolean):void 
+		{
+			if(!flag) {
+				for (var i:int = 0; i <= 9; i++ ) {
+					if (massBool[i]) {
+						numberQuestion = i;
+						initQuestion();
+						break;
+					}
+				}
 			}
-			initQuestion();
+		}
+		
+		private function checkNext():Boolean 
+		{
+			for (var i:int = numberQuestion; i <= 9; i++ ) {
+				if (massBool[i]) {
+					numberQuestion = i;
+					initQuestion();
+					return true;
+				}
+			}
+			return false;
 		}
 		
 	}

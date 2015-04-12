@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -21,7 +22,9 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			
+			addChild(new Cursor(stage));
+			//this.x = Capabilities.screenResolutionX / 4;
+			//this.y = Capabilities.screenResolutionY / 6;
 			menu = new MainMenu();
 			addChild(menu);
 		}

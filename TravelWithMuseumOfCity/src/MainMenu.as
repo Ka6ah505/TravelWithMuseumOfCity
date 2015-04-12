@@ -10,40 +10,45 @@ package
 	import flash.system.fscommand;
 	import flash.display.StageDisplayState;
 	import flash.utils.getDefinitionByName;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
 	 * @author sega
-	 */
+	 */	
 	public class MainMenu extends Sprite 
 	{
-		
+		private var b:background;
 		public function MainMenu() 
 		{
 			super();
-			this.addChild(new background());
+			b = new background();
+			b.width = Capabilities.screenResolutionY;
+			b.height = Capabilities.screenResolutionY;
+			b.x = b.width / 3;
+			this.addChild(b);//new background());
 			
 			addChild(initQuizButton());						
-			addChild(initQuestionsButton());						
-			addChild(initExitButton());
-			
+			addChild(initQuestionsButton());									
 		}
 		
 		private function startQuiz(event:MouseEvent):void {
 			this.removeChildren();
-			addChild(new Splash());
+			//this.removeChild(b);
+			//addChild(new Splash(1));
 			//var q:QuizState = new QuizState();
-			//this.addChild(q);
+			this.addChild(new QuizState());
+			trace("in startQuize");
 		}
 		
 		private function startQuestions(event:MouseEvent):void {
+			//this.removeChildren();
+			
+			this.addChild(new FormLogin());
+			//addChild(new Splash(2));
 			trace("Hello!!!")
 		}
-		
-		private function exitGame(event:MouseEvent):void {
-			fscommand("quit");
-		}
-		
+
 		private function initQuizButton():SimpleButton {
 			var upQuiz:upButtonQuiz = new upButtonQuiz();			
 			var downQuiz:downButtonQuiz = new downButtonQuiz();			
@@ -51,7 +56,7 @@ package
 			var quizButton:SimpleButton = new SimpleButton(upQuiz, overQuiz, downQuiz, upQuiz);
 			quizButton.width = this.width/6;
 			quizButton.height = this.height / 11;
-			quizButton.x = this.width / 2 - quizButton.width / 2;
+			quizButton.x = this.width / 2 - quizButton.width / 2 + b.width / 3;
 			quizButton.y = this.height / 1.8;
 			quizButton.addEventListener(MouseEvent.CLICK, startQuiz);			
 			return quizButton;
@@ -64,24 +69,10 @@ package
 			var questionsButton:SimpleButton = new SimpleButton(upQuestions, overQuestions, downQuestions, upQuestions);
 			questionsButton.width = this.width / 6;
 			questionsButton.height = this.height / 11;
-			questionsButton.x = this.width / 2 - questionsButton.width / 2;
+			questionsButton.x = this.width / 2 - questionsButton.width / 2 + b.width / 3;
 			questionsButton.y = this.height / 1.4;
 			questionsButton.addEventListener(MouseEvent.CLICK, startQuestions);
 			return questionsButton;
-		}
-		
-		private function initExitButton():SimpleButton {
-			var upExit:upButtonExit = new upButtonExit();
-			var overExit:overButtonExit = new overButtonExit();
-			var downExit:downButtonExit = new downButtonExit();
-			var exitButton:SimpleButton = new SimpleButton(upExit, overExit, downExit, upExit);
-			exitButton.width = this.width / 18;
-			exitButton.height = this.width / 18;
-			exitButton.x = this.width - exitButton.width;
-			exitButton.y = 0;
-			exitButton.addEventListener(MouseEvent.CLICK, exitGame);
-			return exitButton;
-		}
+		}		
 	}
-
 }

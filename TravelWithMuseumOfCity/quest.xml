@@ -1,5 +1,0 @@
-<quest id="1" question="Вопрос про музей" answer1="ответ музея1" answer2="ответ музея2" answer3="ответ музея3" answer4="ответ музея4" answerTrue="2" />
-<quest id="2" question="Вопрос про город" answer1="ответ города1" answer2="ответ города2" answer3="ответ города3" answer4="ответ города4" answerTrue="4" />
-<quest id="3" question="Вопрос про историю" answer1="ответ истории1" answer2="ответ истории2" answer3="ответ истории3" answer4="ответ истории4" answerTrue="1" />
-<quest id="4" question="Вопрос про личность" answer1="ответ личности1" answer2="ответ личности2" answer3="ответ личности3" answer4="" answerTrue="" />
-<quest id="4" question="Вопрос про личность" answer1="ответ личности1" answer2="ответ личности2" answer3="ответ личности3" answer4="ответ личности4" answerTrue="2" />

@@ -1,9 +1,12 @@
 package 
 {
+	import flash.display.Loader;
 	import flash.display.Sprite;
+	import flash.net.URLRequest;
 	import flash.text.TextField;
 	import flash.events.TimerEvent; 
     import flash.utils.Timer;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -11,21 +14,23 @@ package
 	 */
 	public class Splash extends Sprite
 	{
+		private var q:int;
 		
-		public function Splash() 
+		public function Splash(i:int) 
 		{
-			addChild(new background());
-			var tf:TextField = new TextField();
-			tf.text = "Готов помучаться?";
-			tf.x = 100;
-			tf.y = 300;
-			tf.textHeight = 20;
-			tf.textWidth = 20;
-			tf.width = 400;
-			tf.height 400;
-			addChild(tf);
-			// creates a new five-second Timer 
-			var minuteTimer:Timer = new Timer(1000, 1);
+			q = i;
+			var request:URLRequest;
+			//addChild(new background());
+			if (i == 1) {
+				request = new URLRequest("Splash.swf");
+			} else if (i == 2) {
+				request = new URLRequest("SplashOlimpiade.swf");
+			}
+			var loader:Loader = new Loader();
+			loader.load(request);
+			
+			addChild(loader);
+			var minuteTimer:Timer = new Timer(6000, 1);
 			
 			// designates listeners for the interval and completion events
 			//minuteTimer.addEventListener(TimerEvent.TIMER, onTick); 
@@ -34,19 +39,21 @@ package
 			// starts the timer ticking 
             minuteTimer.start(); 
 		}
-		
-		public function onTick(event:TimerEvent):void  
-        { 
-            // displays the tick count so far 
-            // The target of this event is the Timer instance itself. 
-            trace("tick " + event.target.currentCount); 
-        } 
  
         public function onTimerComplete(event:TimerEvent):void 
         { 
 			removeChildren();
-			addChild(new QuizState());
-            trace("Time's Up!"); 
+			switch(q) {
+				case 1:
+					addChild(new QuizState());
+					break;
+				case 2:
+					addChild(new FormLogin());
+					break;
+				default:
+					break;
+			}
+			removeEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
         } 
 		
 	}
