@@ -59,9 +59,11 @@ package
 			
 			for (var i:int = 0; i <= 9; i++ ) {
 				var l:Loader = new Loader();
-				l.load(new URLRequest("def.png"));
-				l.x = 50 * i + 50;
-				l.y = 200;
+				l.load(new URLRequest("def1.png"));
+				//l.width = 300;
+				//l.height = 300;
+				l.x = 50 * i + bg.width / 2;
+				l.y = bg.width - bg.width / 3;
 				//l.addEventListener(MouseEvent.CLICK, onSelectQuestion);
 				massImage[i] = l;
 				massImage[i].addEventListener(MouseEvent.CLICK, onSelectQuestion);
@@ -261,8 +263,7 @@ package
 			}			
 		}
 		
-		private function checkFull(flag:Boolean):void 
-		{
+		private function checkFull(flag:Boolean):void {
 			if(!flag) {
 				for (var i:int = 0; i <= 9; i++ ) {
 					if (massBool[i]) {
@@ -274,8 +275,7 @@ package
 			}
 		}
 		
-		private function checkNext():Boolean 
-		{
+		private function checkNext():Boolean {
 			for (var i:int = numberQuestion; i <= 9; i++ ) {
 				if (massBool[i]) {
 					numberQuestion = i;

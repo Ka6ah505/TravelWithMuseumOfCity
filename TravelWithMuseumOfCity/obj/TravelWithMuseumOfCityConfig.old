@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'12.04.2015'</value>
+      <value>'18.04.2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -38,12 +38,13 @@
     <library-path append="true">
       <path-element>C:\Users\Sergey\Documents\GitHub\TravelWithMuseumOfCity\TravelWithMuseumOfCity\lib\myProjAS2.swc</path-element>
       <path-element>C:\Users\Sergey\Documents\GitHub\TravelWithMuseumOfCity\TravelWithMuseumOfCity\lib\QuizState.swc</path-element>
+      <path-element>C:\Users\Sergey\Documents\GitHub\TravelWithMuseumOfCity\TravelWithMuseumOfCity\lib\puzzle_parts.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
     <path-element>C:\Users\Sergey\Documents\GitHub\TravelWithMuseumOfCity\TravelWithMuseumOfCity\src\Main.as</path-element>
   </file-specs>
-  <default-background-color>#FF0080</default-background-color>
+  <default-background-color>#00FFFF</default-background-color>
   <default-frame-rate>60</default-frame-rate>
   <default-size>
     <width>640</width>

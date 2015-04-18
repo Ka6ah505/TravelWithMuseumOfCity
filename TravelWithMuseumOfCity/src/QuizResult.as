@@ -6,6 +6,9 @@ package
 	import flash.events.MouseEvent;
 	import flash.text.TextFormat;
 	import flash.display.Stage;
+	import puzzle.PuzzleApp;
+	import flash.system.Capabilities;
+	
 	/**
 	 * ...
 	 * @author sq
@@ -20,11 +23,15 @@ package
 		{
 			super();
 			init(i);
+			
 		}
 		
 		private function init(i:int):void {
 			var bg:backgroundGame = new backgroundGame();
-			tf.x = 70;
+			bg.width = Capabilities.screenResolutionY;
+			bg.height = Capabilities.screenResolutionY;
+			bg.x = bg.width / 3;
+			tf.x = 70 + bg.width / 3;
 			tf.y = 100;
 			tf.height = 30;
 			tf.width = 400;
@@ -40,7 +47,7 @@ package
 			tf.text = "Вот и всё!!! Верных ответов: " + i;
 			
 			backButton = new Button();
-			backButton.x = 200;
+			backButton.x = 200 + bg.width / 3;
 			backButton.y = 200;
 			backButton.width = 200;
 			backButton.height = 50;
@@ -50,6 +57,7 @@ package
 			addChild(bg);
 			addChild(tf);
 			addChild(backButton);
+			addChild(new PuzzleApp(bg.width / 3));
 		}
 		
 		private function handlerButton(Event:MouseEvent):void {	
