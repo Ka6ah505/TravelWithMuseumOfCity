@@ -6,6 +6,8 @@ package
 	import flash.events.Event;
 	import flash.display.SimpleButton;
 	import flash.events.MouseEvent;
+	import flash.filters.DropShadowFilter;
+	import flash.filters.GlowFilter;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.system.Capabilities;
@@ -15,6 +17,12 @@ package
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.net.URLLoaderDataFormat;
+	import flash.display.Shape;
+	import flash.geom.ColorTransform;
+	import flash.geom.Matrix;
+	import flash.geom.Transform;
+	import flash.filters.BlurFilter;
+	
 	/**
 	 * ...
 	 * @author sega
@@ -37,6 +45,8 @@ package
 		public var score:int = 0;
 		public var massImage:Array = [];
 		public var massBool:Array = new Array(true, true, true, true, true, true, true, true, true, true);
+		public var l:Loader = new Loader();
+		public var f:GlowFilter = new GlowFilter();
 		
 		public function QuizState() 
 		{
@@ -46,11 +56,7 @@ package
 			initButtons();
 			
 			loader.addEventListener(Event.COMPLETE, loadXML);
-			
-			loader.dataFormat = URLLoaderDataFormat.TEXT;
-			
-			//loader.load(new URLRequest("https://drive.google.com/file/d/0B930L_kJddOIRk1sVHlHVGF3SFE/view?usp=sharing"));
-			
+			loader.dataFormat = URLLoaderDataFormat.TEXT;			
 			loader.load(new URLRequest("quest.xml"));	
 			
 		}
@@ -71,11 +77,18 @@ package
 			
 			for (var ii:int = 0; ii <= 9; ii++ ) {
 				addChild(massImage[ii]);
-			}
-			
+			}	
+			massImage[numberQuestion].filters = [f];
 		}
 		
-		private function onSelectQuestion(e:MouseEvent):void {
+		private function resetViewButtonquestion():void {
+			for (var i:int = 0; i < massImage.length; i++) {
+				massImage[i].filters = null;
+			}
+		}
+		
+		private function onSelectQuestion(e:MouseEvent):void {		
+			resetViewButtonquestion();
 			switch(e.target) {
 				case massImage[0]:
 					numberQuestion = 0;
@@ -110,6 +123,7 @@ package
 				default:
 					break;
 			}
+			massImage[numberQuestion].filters = [f];
 			initQuestion();
 			
 		}
@@ -185,6 +199,7 @@ package
 			tf.y = 70;
 			tf.height = 30;
 			tf.width = 300;
+			f.color = 0x33CCF;
 			addChild(bg);
 			addChild(tf);
 			addChild(tfCount);
@@ -244,6 +259,7 @@ package
 		// изменение картинки
 			massImage[numberQuestion].removeEventListener(MouseEvent.CLICK, onSelectQuestion);
 			massImage[numberQuestion].alpha = 0.1;
+			massImage[numberQuestion].filters = null;
 			massBool[numberQuestion] = false;
 		/// НУЖНА проверка
 			
@@ -268,6 +284,7 @@ package
 				for (var i:int = 0; i <= 9; i++ ) {
 					if (massBool[i]) {
 						numberQuestion = i;
+						massImage[numberQuestion].filters = [f];
 						initQuestion();
 						break;
 					}
@@ -279,6 +296,7 @@ package
 			for (var i:int = numberQuestion; i <= 9; i++ ) {
 				if (massBool[i]) {
 					numberQuestion = i;
+					massImage[numberQuestion].filters = [f];
 					initQuestion();
 					return true;
 				}
