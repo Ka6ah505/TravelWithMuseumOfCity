@@ -31,7 +31,7 @@ package
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
 			bg.x = bg.width / 3;
-			tf.x = 70 + bg.width / 3;
+			tf.x = bg.width * .6 ;
 			tf.y = 100;
 			tf.height = 30;
 			tf.width = 400;
@@ -47,17 +47,18 @@ package
 			tf.text = "Вот и всё!!! Верных ответов: " + i;
 			
 			backButton = new Button();
-			backButton.x = 200 + bg.width / 3;
-			backButton.y = 200;
-			backButton.width = 200;
+			backButton.width = 180;
 			backButton.height = 50;
+			backButton.x = 2*bg.width / 3 + backButton.width/5;
+			backButton.y = 200;
 			backButton.label = "НАЗАД";
 			backButton.addEventListener(MouseEvent.CLICK, handlerButton);
 			
 			addChild(bg);
 			addChild(tf);
 			addChild(backButton);
-			addChild(new PuzzleApp(bg.width / 3));
+			var puzzle:PuzzleApp = new PuzzleApp(2 * bg.width / 3, bg.width / 2, i);
+			addChild(puzzle);
 		}
 		
 		private function handlerButton(Event:MouseEvent):void {	

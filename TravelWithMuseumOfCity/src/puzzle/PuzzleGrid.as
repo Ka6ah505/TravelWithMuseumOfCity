@@ -15,7 +15,7 @@ package puzzle
 		// массив всех элементов пазла
         private var elements:Vector.<PuzzleElement>;
 		
-		public function PuzzleGrid(w:int, h:int) {
+		public function PuzzleGrid(w:int, h:int, answer:int) {
 			super();
 			// создаем массив для хранения всех элементов пазла
             elements = new Vector.<PuzzleElement>();
@@ -115,10 +115,54 @@ package puzzle
 			//elements.pop();
 			//elements.pop();
 			//elements.pop();
-			elements.splice(2, 3);
-			elements.splice(10, 3);
+			splicePuzzle(answer);
 			for (var k:int = 0; k < elements.length; k++) {
 				this.addChild(elements[k]);
+			}
+		}
+		
+		public function splicePuzzle(i:int):void {
+			switch(i) {
+				case 0 :
+					elements.splice(6, 3);
+					elements.splice(8, 3);
+					break;
+				case 1 :
+					elements.splice(6, 3);
+					elements.splice(8, 3);
+					break;
+				case 2 :
+					elements.splice(6, 3);
+					elements.splice(8, 3);
+					break;	
+				case 3:
+					elements.splice(7, 2);
+					elements.splice(9, 3);
+					break;
+				case 4 :
+					elements.splice(7, 2);
+					elements.splice(9, 3);
+					break;
+				case 5:
+					elements.splice(8, 1);
+					elements.splice(10, 3);
+					break;
+				case 6:
+					elements.splice(11, 3);
+					break;
+				case 7:
+					elements.splice(12, 2);
+					break;
+				case 8 :
+					elements.splice(13, 1);
+					break;
+				case 9 :
+					elements.splice(13, 1);
+					break;
+				case 10:
+					break;
+				default:
+					break;
 			}
 		}
 		

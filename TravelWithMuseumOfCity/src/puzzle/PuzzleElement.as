@@ -63,9 +63,9 @@ package puzzle
             addPart(bot, 180);
 			
 			 // создаем фильтры Белого свечения и Тени
-            var glow:GlowFilter = new GlowFilter(0xffffff, 0.5, 1.1, 1.1, 30);
-            var shadow:DropShadowFilter = new DropShadowFilter(4, 45, 0x0, .8, 8, 8);
-            this.filters = [glow, shadow];
+            var glow:GlowFilter = new GlowFilter(0x555555, 0.5, 1.1, 1.1, 30, 1, false, false);
+            //var shadow:DropShadowFilter = new DropShadowFilter(4, 45, 0x0, .8, 8, 8);
+            this.filters = [glow];//, shadow];
 		}
 		
 		private function addPart(type:int, rot:int):void {

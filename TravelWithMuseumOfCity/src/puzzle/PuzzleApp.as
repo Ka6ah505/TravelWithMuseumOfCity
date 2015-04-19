@@ -5,6 +5,7 @@ package puzzle
 	import flash.display.StageAlign;
 	import flash.events.MouseEvent;
 	import flash.display.BitmapData;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -18,7 +19,7 @@ package puzzle
 		
 		private var bitmapData:BitmapData;
 		
-		public function PuzzleApp(indent:int) {
+		public function PuzzleApp(x:int, y:int, i:int) {
 			//this.stage.scaleMode = StageScaleMode.NO_SCALE;
             //this.stage.align = StageAlign.TOP_LEFT;
             this.graphics.lineStyle(1, 0x999999, 1);
@@ -26,19 +27,28 @@ package puzzle
             
             //
             // создаем картинку для пазла
-            bitmapData = new image();
+            //bitmapData = new image();
+			var random:int = Math.round(Math.random() * 2);
+			if (random == 0) {
+				bitmapData = new jar();
+			} else if (random == 1) {
+				bitmapData = new gate();
+			} else {
+				bitmapData = new armor();
+			}
+			//bitmapData = new jar();
             //
-            resetGrid(indent);
+            resetGrid(x, y, i);
 		}
         
-        private function resetGrid(indent:int):void {
+        private function resetGrid(x:int, y:int, i:int):void {
 			if (grid != null) {
                 if (this.contains(grid)) this.removeChild(grid);
             }
             //
-            grid = new PuzzleGrid(5, 4);
-            grid.x = indent*1.33;
-            grid.y = indent*1.5;
+            grid = new PuzzleGrid(4, 5, i);
+			grid.x = x;
+            grid.y = y/1.5;
             this.addChild(grid);
             // передаем картинку пазлу
             grid.Image = bitmapData;
