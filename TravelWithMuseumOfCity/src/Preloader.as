@@ -8,6 +8,7 @@ package
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
 	import flash.utils.getDefinitionByName;
+	import flash.text.TextField;
 	
 	/**
 	 * ...
@@ -15,6 +16,8 @@ package
 	 */
 	public class Preloader extends MovieClip 
 	{
+		
+		private var preloader_text:TextField;
 		
 		public function Preloader() 
 		{
@@ -27,6 +30,9 @@ package
 			loaderInfo.addEventListener(IOErrorEvent.IO_ERROR, ioError);
 			
 			// TODO show loader
+			preloader_text = new TextField();
+			preloader_text.text = "Load 0 % ";
+			addChild(preloader_text);
 		}
 		
 		private function ioError(e:IOErrorEvent):void 
@@ -37,6 +43,8 @@ package
 		private function progress(e:ProgressEvent):void 
 		{
 			// TODO update loader
+			preloader_text.text = 
+			"Load "+ (Math.round((loaderInfo.bytesLoaded * 100) / loaderInfo.bytesTotal)) + " %";
 		}
 		
 		private function checkFrame(e:Event):void 
@@ -61,6 +69,7 @@ package
 		
 		private function startup():void 
 		{
+			preloader_text.visible = false;
 			var mainClass:Class = getDefinitionByName("Main") as Class;
 			addChild(new mainClass() as DisplayObject);
 		}
