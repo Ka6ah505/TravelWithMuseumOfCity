@@ -30,8 +30,8 @@ package
 			var bg:backgroundGame = new backgroundGame();
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
-			bg.x = bg.width / 3;
-			tf.x = bg.width * .6 ;
+			//bg.x = bg.width / 3;
+			tf.x = bg.width /3 ;
 			tf.y = 100;
 			tf.height = 30;
 			tf.width = 400;
@@ -44,20 +44,22 @@ package
             format.size = 20;
             format.underline = true;
 			tf.defaultTextFormat = format;
-			tf.text = "Вот и всё!!! Верных ответов: " + i;
+			tf.text = Language.getText(Language.RESULT_TEXT) + i;
+			tf.mouseEnabled = false;
 			
-			backButton = new Button();
+			var _colors:Array = [0xFfffff, 0xEC748B, 0xC13A59, 0xA81230];
+			backButton = new Button(_colors);
 			backButton.width = 180;
 			backButton.height = 50;
-			backButton.x = 2*bg.width / 3 + backButton.width/5;
+			backButton.x = backButton.width/5 + bg.width / 3;
 			backButton.y = 200;
-			backButton.label = "НАЗАД";
+			backButton.label = Language.getText(Language.BACK_STATE);
 			backButton.addEventListener(MouseEvent.CLICK, handlerButton);
 			
 			addChild(bg);
 			addChild(tf);
 			addChild(backButton);
-			var puzzle:PuzzleApp = new PuzzleApp(2 * bg.width / 3, bg.width / 2, i);
+			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2, i);
 			addChild(puzzle);
 		}
 		

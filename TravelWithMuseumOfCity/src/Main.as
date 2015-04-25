@@ -6,6 +6,7 @@ package
 	import puzzle.PuzzleApp;
 	import flash.display.StageScaleMode;
 	import flash.display.StageAlign;
+	import flash.display.StageDisplayState;
 	
 	/**
 	 * ...
@@ -32,9 +33,16 @@ package
 			//this.stage.align = StageAlign.TOP;
 			
 			// от прошлого
+			//stage.scaleMode = StageScaleMode.NO_SCALE;
+			//stage.align = StageAlign.TOP;
+			//stage.displayState = StageDisplayState.FULL_SCREEN;
+			
+			//Language.setEnglish();
+			
 			addChild(new Cursor(stage));
-			menu = new MainMenu();
-			addChild(menu);
+			addChild(new SelectLanguage())
+			//menu = new MainMenu();
+			//addChild(menu);
 			
 			
 			//addChild(new PuzzleApp());

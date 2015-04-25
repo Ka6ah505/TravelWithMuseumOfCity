@@ -22,6 +22,8 @@ package
 	import flash.geom.Matrix;
 	import flash.geom.Transform;
 	import flash.filters.BlurFilter;
+	import flash.display.StageScaleMode;
+	import flash.display.StageAlign;
 	
 	/**
 	 * ...
@@ -30,7 +32,7 @@ package
 	public class QuizState extends Sprite 
 	{
 		private var bg:backgroundGame;
-		private var tf:TextField = new TextField();
+		private var question:TextField = new TextField();
 		private var tfCount:TextField = new TextField();
 		private var answerButtonA:Button;
 		private var answerButtonB:Button;
@@ -51,13 +53,14 @@ package
 		public function QuizState() 
 		{
 			super();
+			
 			init();
 			initSelectQuestion();
 			initButtons();
 			
 			loader.addEventListener(Event.COMPLETE, loadXML);
 			loader.dataFormat = URLLoaderDataFormat.TEXT;			
-			loader.load(new URLRequest("quest.xml"));	
+			loader.load(new URLRequest(Language.getText(Language.QUEST_FILE)));	
 			
 		}
 		
@@ -66,11 +69,15 @@ package
 			for (var i:int = 0; i <= 9; i++ ) {
 				var l:Loader = new Loader();
 				l.load(new URLRequest("def1.png"));
-				//l.width = 300;
-				//l.height = 300;
-				l.x = 50 * i + bg.width / 2;
+				l.x = 50 * i + bg.width / 5;
 				l.y = bg.width - bg.width / 3;
-				//l.addEventListener(MouseEvent.CLICK, onSelectQuestion);
+				
+				var tempNumber:TextField = new TextField();
+				tempNumber.text = (i + 1)+".";
+				tempNumber.x = 50 * i + bg.width / 5 - 15;
+				tempNumber.y = bg.width - bg.width / 3 + 10;
+				addChild(tempNumber);
+				
 				massImage[i] = l;
 				massImage[i].addEventListener(MouseEvent.CLICK, onSelectQuestion);
 			}
@@ -175,15 +182,16 @@ package
             format.color = 0xFF0000;
             format.size = 20;
             format.underline = true;
-			tf.defaultTextFormat = format;
+			question.defaultTextFormat = format;
 			tfCount.width = 200;
-			tfCount.x = bg.width;
+			tfCount.x = bg.width / 2 + 100;
+			tfCount.y = 20;
 			tfCount.defaultTextFormat = format;
+			tfCount.mouseEnabled = false;
 			var tmp:int = numberQuestion + 1;
-			tfCount.text = "Вопрос №" + tmp// +"" + "/10";
+			tfCount.text = Language.getText(Language.COUNT_QUESTION) + tmp// +"" + "/10";
 			
-			trace("quest #"+numberQuestion);
-			tf.text = content[numberQuestion].getQuestion();		
+			question.text = content[numberQuestion].getQuestion();		
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
 			answerButtonC.label = content[numberQuestion].getAnswerC();
@@ -194,49 +202,52 @@ package
 			bg = new backgroundGame();
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
-			bg.x = bg.width / 3;
-			tf.x = 70 + bg.width / 3;
-			tf.y = 70;
-			tf.height = 30;
-			tf.width = 300;
+			//bg.x = bg.width / 3;
+			question.x = 70; //+ bg.width / 3;
+			question.y = 140;
+			question.height = 30;
+			question.width = 300;
+			question.mouseEnabled = false;
 			f.color = 0x33CCF;
 			addChild(bg);
-			addChild(tf);
+			addChild(question);
 			addChild(tfCount);
 		}
 		
 		private function initButtons():void {
-			answerButtonA = new Button();
-			answerButtonB = new Button();
-			answerButtonC = new Button();
-			answerButtonD = new Button();
-			exitQuizState = new Button();
+			var _colors:Array = [0xFfffff, 0xEC748B, 0xC13A59, 0xA81230];
+			answerButtonA = new Button(_colors);
+			answerButtonB = new Button(_colors);
+			answerButtonC = new Button(_colors);
+			answerButtonD = new Button(_colors);
+			exitQuizState = new Button(_colors);
 			addChild(answerButtonA);
 			addChild(answerButtonB);
 			addChild(answerButtonC);
 			addChild(answerButtonD);
 			addChild(exitQuizState);
-			answerButtonA.x = 50 + bg.width / 3;
+			answerButtonA.x = 50 ;
 			answerButtonA.y = bg.width / 2;
 			answerButtonA.height = 30;
 			//answerButtonA.width = 200;
 			answerButtonA.width = bg.width / 3;
-			answerButtonB.x = bg.width - 50;//300 + bg.width / 3;
+			answerButtonB.x = bg.width/3  - 50 + bg.width / 3;
 			answerButtonB.y = bg.width / 2;
 			answerButtonB.height = 30;
 			answerButtonB.width = bg.width / 3;
-			answerButtonC.x = 50 + bg.width / 3;
+			answerButtonC.x = 50 ;
 			answerButtonC.y = bg.width / 2 + 40;
 			answerButtonC.height = 30;
 			answerButtonC.width = bg.width / 3;
-			answerButtonD.x = bg.width - 50;;
+			answerButtonD.x = 2*bg.width/3 - 50;;
 			answerButtonD.y = bg.width / 2 + 40;
 			answerButtonD.height = 30;
 			answerButtonD.width = bg.width / 3;
 			exitQuizState.width = bg.width / 3.5;
 			exitQuizState.height = 30;
-			exitQuizState.label = "Завершить тест";
-			exitQuizState.x = bg.width / 2 + exitQuizState.width / 2;
+			//exitQuizState.label = "Завершить тест";
+			exitQuizState.label = Language.getText(Language.EXIT_TEST);
+			exitQuizState.x = bg.width/3;// / 2 + exitQuizState.width / 2;
 			exitQuizState.y  = bg.height - 150;
 			answerButtonA.addEventListener(MouseEvent.CLICK, handlerButton);
 			answerButtonB.addEventListener(MouseEvent.CLICK, handlerButton);

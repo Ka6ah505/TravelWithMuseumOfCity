@@ -23,7 +23,7 @@ package
 		{
 			if (stage) {
 				stage.scaleMode = StageScaleMode.NO_SCALE;
-				stage.align = StageAlign.TOP_LEFT;
+				stage.align = StageAlign.TOP;
 			}
 			addEventListener(Event.ENTER_FRAME, checkFrame);
 			loaderInfo.addEventListener(ProgressEvent.PROGRESS, progress);
@@ -69,7 +69,7 @@ package
 		
 		private function startup():void 
 		{
-			preloader_text.visible = false;
+			preloader_text.visible = true;
 			var mainClass:Class = getDefinitionByName("Main") as Class;
 			addChild(new mainClass() as DisplayObject);
 		}

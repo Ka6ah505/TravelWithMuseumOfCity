@@ -17,7 +17,8 @@ package
 	public class Button extends Sprite 
 	{
 		//это необходимо для отрисовки кнопки
-		private const _colors:Array = [0xFAD4DB, 0xEC748B, 0xC13A59, 0xA81230];
+		//private var _colors:Array = [0xFAD4DB, 0xEC748B, 0xC13A59, 0xA81230];
+		private var _colors:Array;
 		private const _colors2:Array = [0xcfd3e8, 0x9aa2cf, 0x4e5ba4, 0x3d4881];
 		private const _alphas:Array = [100, 100, 100, 100];
 		private const _ratios:Array = [0, 126, 127, 255];
@@ -33,9 +34,10 @@ package
 		private var _w:Number = 120;
 		private	var _h:Number = 30;
 		
-		public function Button() 
+		public function Button(colors:Array) 
 		{
 			super();
+			_colors = colors;
 			//свойства объекта, задающего форматирование текста
 			myFormat.align = "center";
 			myFormat.font = "Tahoma";
