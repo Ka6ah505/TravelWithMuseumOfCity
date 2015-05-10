@@ -3,6 +3,7 @@ package
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.system.Capabilities;
+	import flash.net.*;
 	
 	/**
 	 * ...

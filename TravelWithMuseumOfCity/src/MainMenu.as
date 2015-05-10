@@ -14,6 +14,10 @@ package
 	import flash.display.StageScaleMode;
 	import flash.display.StageAlign;
 	
+	import flash.net.navigateToURL;
+    import flash.net.URLRequest;
+    import flash.net.URLVariables;
+	
 	/**
 	 * ...
 	 * @author sega
@@ -52,7 +56,16 @@ package
 			trace("in startQuize");
 		}
 		
-		private function startQuestions(event:MouseEvent):void {			
+		private function startQuestions(event:MouseEvent):void {	
+			
+			var url:String = "http://localhost:8080/WebApplication1/NewServlet";
+            var request:URLRequest = new URLRequest(url);
+            var variables:URLVariables = new URLVariables();
+            variables.exampleSessionId = new Date().getTime();
+            variables.exampleUserLabel = "guest";
+            request.data = variables;
+            navigateToURL(request);
+			
 			this.addChild(new FormLogin());
 			trace("Hello!!!")
 		}
@@ -65,7 +78,7 @@ package
 			//var quizButton:SimpleButton = new SimpleButton(upQuiz, overQuiz, downQuiz, upQuiz);
 			var quizButton:Button = new Button(_colors);
 			quizButton.label = Language.getText(Language.START_QUIZ);
-			quizButton.width = this.width/6;
+			quizButton.width = this.width / 4;
 			quizButton.height = this.height / 11;
 			quizButton.x = this.width / 2 - quizButton.width / 2;
 			quizButton.y = this.height / 1.8;
@@ -80,7 +93,7 @@ package
 			//var questionsButton:SimpleButton = new SimpleButton(upQuestions, overQuestions, downQuestions, upQuestions);
 			var questionsButton:Button = new Button(_colors);
 			questionsButton.label = Language.getText(Language.START_QUESTIONS);
-			questionsButton.width = this.width / 6;
+			questionsButton.width = this.width / 4;
 			questionsButton.height = this.height / 11;
 			questionsButton.x = this.width / 2 - questionsButton.width / 2;
 			questionsButton.y = this.height / 1.4;

@@ -32,8 +32,7 @@ package
 	public class QuizState extends Sprite 
 	{
 		private var bg:backgroundGame;
-		private var question:TextField = new TextField();
-		private var tfCount:TextField = new TextField();
+		private var tfQuestion:TextField = new TextField();
 		private var answerButtonA:Button;
 		private var answerButtonB:Button;
 		private var answerButtonC:Button;
@@ -49,20 +48,31 @@ package
 		public var massBool:Array = new Array(true, true, true, true, true, true, true, true, true, true);
 		public var l:Loader = new Loader();
 		public var f:GlowFilter = new GlowFilter();
+		public var pic:Loader = new Loader();
 		
 		public function QuizState() 
 		{
 			super();
-			
+			addChild(pic);
 			init();
 			initSelectQuestion();
 			initButtons();
 			
+			loader.dataFormat = URLLoaderDataFormat.TEXT;	
+			try {
+				loader.load(new URLRequest(Language.getText(Language.QUEST_FILE)));
+			}catch (error:SecurityError) {
+                trace("A SecurityError has occurred.");
+			}
+			
 			loader.addEventListener(Event.COMPLETE, loadXML);
-			loader.dataFormat = URLLoaderDataFormat.TEXT;			
-			loader.load(new URLRequest(Language.getText(Language.QUEST_FILE)));	
+			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			
 		}
+		
+		private function errorHandler(e:IOErrorEvent):void {
+            trace("Had problem loading the XML File.");
+        }
 		
 		private function initSelectQuestion():void {
 			
@@ -76,6 +86,7 @@ package
 				tempNumber.text = (i + 1)+".";
 				tempNumber.x = 50 * i + bg.width / 5 - 15;
 				tempNumber.y = bg.width - bg.width / 3 + 10;
+				tempNumber.mouseEnabled = false;
 				addChild(tempNumber);
 				
 				massImage[i] = l;
@@ -158,7 +169,8 @@ package
 													xml.child("quest")[j].attributes()[3], 
 													xml.child("quest")[j].attributes()[4], 
 													xml.child("quest")[j].attributes()[5],
-													xml.child("quest")[j].attributes()[6]
+													xml.child("quest")[j].attributes()[6],
+													xml.child("quest")[j].attributes()[7]
 													)
 							);
 			}
@@ -177,25 +189,33 @@ package
 		}
 		
 		public function initQuestion():void {
+			removeChild(pic);
 			var format:TextFormat = new TextFormat();
             format.font = "Verdana";
             format.color = 0xFF0000;
             format.size = 20;
             format.underline = true;
-			question.defaultTextFormat = format;
-			tfCount.width = 200;
-			tfCount.x = bg.width / 2 + 100;
-			tfCount.y = 20;
-			tfCount.defaultTextFormat = format;
-			tfCount.mouseEnabled = false;
-			var tmp:int = numberQuestion + 1;
-			tfCount.text = Language.getText(Language.COUNT_QUESTION) + tmp// +"" + "/10";
+			tfQuestion.defaultTextFormat = format;
 			
-			question.text = content[numberQuestion].getQuestion();		
+			tfQuestion.width = 400;
+			tfQuestion.multiline = true;
+			tfQuestion.wordWrap = true;
+			tfQuestion.height = 100;
+			tfQuestion.width = this.height / 1.3;
+			
+			
+			tfQuestion.text = content[numberQuestion].getQuestion();		
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
 			answerButtonC.label = content[numberQuestion].getAnswerC();
 			answerButtonD.label = content[numberQuestion].getAnswerD();
+			
+			pic.load(new URLRequest(content[numberQuestion].getPic()));
+			pic.x = bg.width/3;
+			//pic.y = 170;
+			pic.y = bg.height / 3 - 100;
+			//addChild(pic);
+			addChild(pic)
 		}
 		
 		public function init():void {
@@ -203,15 +223,14 @@ package
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
 			//bg.x = bg.width / 3;
-			question.x = 70; //+ bg.width / 3;
-			question.y = 140;
-			question.height = 30;
-			question.width = 300;
-			question.mouseEnabled = false;
+			tfQuestion.x = 70; //+ bg.width / 3;
+			tfQuestion.y = 20;
+			tfQuestion.height = 30;
+			tfQuestion.width = 300;
+			tfQuestion.mouseEnabled = false;
 			f.color = 0x33CCF;
 			addChild(bg);
-			addChild(question);
-			addChild(tfCount);
+			addChild(tfQuestion);
 		}
 		
 		private function initButtons():void {

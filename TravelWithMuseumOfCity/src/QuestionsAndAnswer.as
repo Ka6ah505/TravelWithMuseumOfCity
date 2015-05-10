@@ -1,5 +1,6 @@
 package 
 {
+	import flash.display.Loader;
 	/**
 	 * ...
 	 * @author sega
@@ -12,8 +13,9 @@ package
 		private var answerC:String;
 		private var answerD:String;
 		private var trueAnswer:int;
+		private var pic:String;
 		
-		public function QuestionsAndAnswer(question:String, answerA:String, answerB:String, answerC:String, answerD:String, trueAnswer:int) 
+		public function QuestionsAndAnswer(question:String, answerA:String, answerB:String, answerC:String, answerD:String, trueAnswer:int, pic:String) 
 		{
 			this.question = question;
 			this.answerA = answerA;
@@ -21,6 +23,7 @@ package
 			this.answerC = answerC;
 			this.answerD = answerD;
 			this.trueAnswer = trueAnswer;
+			this.pic = pic;
 		}
 		
 		public function getQuestion():String {
@@ -40,6 +43,9 @@ package
 		}
 		public function getTrueAnswer():int {
 			return trueAnswer;
+		}
+		public function getPic():String {
+			return pic;
 		}
 	}
 

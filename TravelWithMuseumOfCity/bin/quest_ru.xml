@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <questions>
-	<quest id="1" question="Вопрос номер 1" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" />
-	<quest id="2" question="Вопрос номер 2" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="3" question="Вопрос номер 3" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" />
-	<quest id="4" question="Вопрос номер 4" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="5" question="Вопрос номер 5" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="6" question="Вопрос номер 6" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="7" question="Вопрос номер 7" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="8" question="Вопрос номер 8" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="9" question="Вопрос номер 9" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="10" question="Вопрос номер 10" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" />
-	<quest id="11" question="Вопрос номер 11" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" />
-	<quest id="12" question="Вопрос номер 12" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="13" question="Вопрос номер 13" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" />
-	<quest id="14" question="Вопрос номер 14" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="15" question="Вопрос номер 15" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" />
-	<quest id="16" question="Вопрос номер 16" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" />
-	<quest id="17" question="Вопрос номер 17" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" />
-	<quest id="18" question="Вопрос номер 18" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" />
-	<quest id="19" question="Вопрос номер 19" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" />
-	<quest id="20" question="Вопрос номер 20" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" />
-	<quest id="21" question="Вопрос номер 21" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" />
+
+	<quest id="1" question="Кто такие ушкуйники?" answer1="первые жители города" answer2="речные разбойники" answer3="торговые люди" answer4="крестьяне" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="2" question="В каком году Ярославль стал столицей для всего Российского государства?" answer1="1380" answer2="1812" answer3="1939" answer4="1612" answerTrue="4" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="3" question="С каким зверем связана легенда основания града Ярослава?" answer1="медведь" answer2="рысь" answer3="волк" answer4="змея" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="4" question="Сколько раз в истории Ярославля возводили на Стрелке Успенский собор?" answer1="три" answer2="четыре" answer3="пять" answer4="шесть" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="5" question="Чем украшали ярославские храмы в XVII веке?" answer1="лепкой" answer2="изразцами" answer3="красным кирпичем" answer4="стеклянная мозайка" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="6" question="В каком году был основан первый русский публичный профессиональный театр?" answer1="1750" answer2="1650" answer3="1850" answer4="1925" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="7" question="В каком году центральная часть Ярославля была включена в список Всемирного историко-культурного наследия ЮНЕСКО?" answer1="2005" answer2="2007" answer3="2009" answer4="2010" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="8" question="По производству, какого материала в 1932 году первым в стране в Ярославле был пущен в строй крупный завод?" answer1="лакокрасочного материала" answer2="синтетического каучука" answer3="нефтесырья" answer4="кирпича" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="9" question="Как называлась первая кондитерская фабрика в Ярославле?" answer1="«Братья Кузнецовы»" answer2="«Братья Елисеевы»" answer3="«Бельфор»" answer4="«Фрекенбок»" answerTrue="3" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="10" question="При каком ярославском правителе города появился первый электрический трамвай?" answer1="И. А. Вахрамеев" answer2="А. М. Безобразов" answer3="А. П. Мельгунов" answer4="В. В. Волончунас" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="11" question="Какой храм изображен на фотографии?" answer1="Церковь Иоанна Крестителя" answer2="Церковь Рождества Христова" answer3="Церковь Ильи Пророка" answer4="Церковь Николы Надеина" answerTrue="3" pathOfImage="../bin/image/11.jpg"/>
+	<quest id="12" question="Вопрос номер 12" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
+	<quest id="13" question="Вопрос номер 13" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
+	<quest id="14" question="Вопрос номер 14" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
+	<quest id="15" question="Вопрос номер 15" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+	<quest id="16" question="Вопрос номер 16" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
+	<quest id="17" question="Вопрос номер 17" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
+	<quest id="18" question="Вопрос номер 18" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="19" question="Вопрос номер 19" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="20" question="Вопрос номер 20" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
+	<quest id="21" question="Вопрос номер 21" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" pathOfImage="../bin/image/1.png"/>
 </questions>
