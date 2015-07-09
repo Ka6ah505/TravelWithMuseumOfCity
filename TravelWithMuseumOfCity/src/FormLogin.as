@@ -20,7 +20,7 @@ package
 		
 		public function FormLogin(ans1:String, ans2:String, ans3:String, ans4:String, ans5:String) {
 			super();
-			addChild(new background());
+			addChild(new backgroundGame());
 			init();
 			var url:String = "http://localhost:8080/WebApplication1/NewServlet";
             var request:URLRequest = new URLRequest(url);

@@ -14,7 +14,7 @@ package
 	 */
 	public class SelectLanguage extends Sprite 
 	{
-		private var bg:background;
+		private var bg:backgroundGame;
 		//private var buttonRU:Button;
 		//private var buttonEN:Button;
 		private var flagRU: Array;
@@ -26,7 +26,7 @@ package
 		public function SelectLanguage() 
 		{
 			super();
-			bg = new background();
+			bg = new backgroundGame();
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
 			addChild(bg);

@@ -53,10 +53,10 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\myProjAS2.swc" />
-    <element path="lib\QuizState.swc" />
     <element path="lib\puzzle_parts.swc" />
     <element path="lib\flagRU.swc" />
     <element path="lib\flagEU.swc" />
+    <element path="lib\QuizState.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

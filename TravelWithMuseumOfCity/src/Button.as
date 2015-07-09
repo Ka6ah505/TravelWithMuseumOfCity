@@ -85,6 +85,7 @@ package
 			//вешаем обработчики событий мыши:
 			this.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver); 	//курсор встал на кнопку
 			this.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);	//курсор покинул кнопку
+			this.addEventListener(MouseEvent.CLICK, onClickMouse);
 		}
 			
 		//setter-функция - установка текста кнопки
@@ -112,7 +113,10 @@ package
 			this.graphics.drawRect(0, 0, _w, _h);
 			this.graphics.endFill();
 		}
-		
+		private function onClickMouse(e:MouseEvent):void {
+			var sound:clickSound = new clickSound();
+			sound.play();
+		}
 	}
 
 }

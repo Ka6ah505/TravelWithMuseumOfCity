@@ -11,7 +11,6 @@ package puzzle
 	 */
 	public class PuzzleGrid extends Sprite 
 	{
-	
 		// массив всех элементов пазла
         private var elements:Vector.<PuzzleElement>;
 		

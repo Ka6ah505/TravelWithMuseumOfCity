@@ -24,13 +24,13 @@ package
 	public class MainMenu extends Sprite 
 	{
 		private var _colors:Array = [0xFAD4DB, 0xEC748B, 0xC13A59, 0xA81230];
-		private var b:background;
+		private var b:backgroundGame;
 		private var s:Stage;
 		public function MainMenu() 
 		{
 			super();
 			
-			b = new background();
+			b = new backgroundGame();
 			b.width = Capabilities.screenResolutionY;
 			b.height = Capabilities.screenResolutionY;
 			this.addChild(b);

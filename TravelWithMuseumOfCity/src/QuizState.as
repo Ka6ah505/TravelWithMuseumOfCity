@@ -299,7 +299,22 @@ package
 				this.addChild(rq);
 			} else {
 				initQuestion();
-			}			
+			}
+			checkMass();
+		}
+		
+		private function checkMass():void {
+			var count:int = 0;
+			for (var i:int = 0; i <= 9; i++) {
+				if (!massBool[i]) {
+					count++;
+				}
+			}
+			if (count == 10) {
+				this.removeChildren();
+				var rq:QuizResult = new QuizResult(score);
+				this.addChild(rq);
+			}
 		}
 		
 		private function checkFull(flag:Boolean):void {
