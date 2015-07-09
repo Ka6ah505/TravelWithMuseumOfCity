@@ -16,7 +16,7 @@ package puzzle
         public var top:int; // верхняя сторона
         public var right:int; // правая сторона
         public var bot:int; // нижняя сторона
-		 //
+
         // спрайт-контейнер который будет
         // содержать куски элемента
         private var cont:Sprite;

@@ -16,7 +16,7 @@ package
 	public class QuizResult extends Sprite
 	{
 		
-		private var tf:TextField = new TextField();
+		private var tfResult:TextField = new TextField();
 		private var backButton:Button;
 		
 		public function QuizResult(i:int) 
@@ -30,36 +30,48 @@ package
 			var bg:backgroundGame = new backgroundGame();
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
-			//bg.x = bg.width / 3;
-			tf.x = bg.width /3 ;
-			tf.y = 100;
-			tf.height = 30;
-			tf.width = 400;
+			// настройка текста
+			tfResult.x = 70//bg.width / 3;
+			tfResult.y = bg.width / 6.5;
+			tfResult.height = 100;
+			tfResult.width = 600;
+			tfResult.multiline = true;
+			tfResult.wordWrap = true;
+			tfResult.mouseEnabled = false;
 			
-			tf.multiline = true;
-			
+			//настройка формата текста
 			var format:TextFormat = new TextFormat();
             format.font = "Verdana";
-            format.color = 0xFF0000;
+            format.color = 0x0000FF;
             format.size = 20;
+			format.bold = true;
             format.underline = true;
-			tf.defaultTextFormat = format;
-			tf.text = Language.getText(Language.RESULT_TEXT) + i;
-			tf.mouseEnabled = false;
+			tfResult.defaultTextFormat = format;
+			if (i < 5) {
+				tfResult.text = Language.getText(Language.QUESTIONSANSWER_Bad) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
+			} else if (i >= 5 && i <= 9) {
+				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Good) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
+			} else {
+				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Perfect) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
+			}
 			
+			tfResult.mouseEnabled = false;
+			
+			//настройка кнопки
 			var _colors:Array = [0xFfffff, 0xEC748B, 0xC13A59, 0xA81230];
 			backButton = new Button(_colors);
 			backButton.width = 180;
 			backButton.height = 50;
 			backButton.x = backButton.width/5 + bg.width / 3;
-			backButton.y = 200;
+			backButton.y = bg.width / 1.3;
 			backButton.label = Language.getText(Language.BACK_STATE);
 			backButton.addEventListener(MouseEvent.CLICK, handlerButton);
 			
+			// добавление элементов на экран
 			addChild(bg);
-			addChild(tf);
+			addChild(tfResult);
 			addChild(backButton);
-			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2, i);
+			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2.6, i);
 			addChild(puzzle);
 		}
 		

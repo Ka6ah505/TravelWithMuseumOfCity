@@ -3,6 +3,9 @@ package
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
+	import flash.net.*;
+	import flash.net.sendToURL;
+	import flash.events.MouseEvent;
 	
 	/**
 	 * ...
@@ -13,13 +16,28 @@ package
 		private var userMail:TextField;
 		private var userName:TextField;
 		private var userAge:TextField;
+		private var buttonSendMessage:Button;
 		
-		public function FormLogin() 
-		{
+		public function FormLogin(ans1:String, ans2:String, ans3:String, ans4:String, ans5:String) {
 			super();
 			addChild(new background());
 			init();
-			
+			var url:String = "http://localhost:8080/WebApplication1/NewServlet";
+            var request:URLRequest = new URLRequest(url);
+            var variables:URLVariables = new URLVariables();
+            //variables.exampleSessionId = new Date().getTime();
+            variables.exampleUserLabel = ans1;
+			//variables.answer1 = "ответ1: /n"+ans1+"/n";
+			//variables.answer2 = "ответ2: /n"+ans2+"/n";
+			//variables.answer3 = "ответ3: /n"+ans3+"/n";
+			//variables.answer4 = "ответ4: /n"+ans4+"/n";
+			//variables.answer5 = "ответ5: /n" + ans5 + "/n";
+			//trace(ans1)
+            request.data = variables;
+			//request.method = URLRequestMethod.POST;
+            //navigateToURL(request);
+			sendToURL(request);
+			//this.addChild(new FormLogin());
 		}
 		
 		private function init():void {
@@ -48,6 +66,7 @@ package
 			addChild(userAge);
 		}
 		
+		//private sendToMessage(e:MouseEvent):void {}
 	}
 
 }

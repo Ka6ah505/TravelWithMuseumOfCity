@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <questions>
 
-	<quest id="1" question="Кто такие ушкуйники?" answer1="первые жители города" answer2="речные разбойники" answer3="торговые люди" answer4="крестьяне" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+	<quest id="1" question="Кто такие ушкуйники?" answer1="первые жители города" answer2="речные разбойники" answer3="торговые люди" answer4="крестьяне" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
 
 	<quest id="2" question="В каком году Ярославль стал столицей для всего Российского государства?" answer1="1380" answer2="1812" answer3="1939" answer4="1612" answerTrue="4" pathOfImage="../bin/image/wq.png"/>
 
@@ -11,24 +11,52 @@
 
 	<quest id="5" question="Чем украшали ярославские храмы в XVII веке?" answer1="лепкой" answer2="изразцами" answer3="красным кирпичем" answer4="стеклянная мозайка" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
 
-	<quest id="6" question="В каком году был основан первый русский публичный профессиональный театр?" answer1="1750" answer2="1650" answer3="1850" answer4="1925" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="6" question="В каком году был основан первый русский публичный профессиональный театр?" answer1="1750" answer2="1650" answer3="1850" answer4="1925" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
 
-	<quest id="7" question="В каком году центральная часть Ярославля была включена в список Всемирного историко-культурного наследия ЮНЕСКО?" answer1="2005" answer2="2007" answer3="2009" answer4="2010" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="7" question="В каком году центральная часть Ярославля была включена в список Всемирного историко-культурного наследия ЮНЕСКО?" answer1="2005" answer2="2007" answer3="2009" answer4="2010" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
 
-	<quest id="8" question="По производству, какого материала в 1932 году первым в стране в Ярославле был пущен в строй крупный завод?" answer1="лакокрасочного материала" answer2="синтетического каучука" answer3="нефтесырья" answer4="кирпича" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+	<quest id="8" question="По производству, какого материала в 1932 году первым в стране в Ярославле был пущен в строй крупный завод?" answer1="Лакокрасочного материала" answer2="Синтетического каучука" answer3="Нефтесырья" answer4="Кирпича" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
 
-	<quest id="9" question="Как называлась первая кондитерская фабрика в Ярославле?" answer1="«Братья Кузнецовы»" answer2="«Братья Елисеевы»" answer3="«Бельфор»" answer4="«Фрекенбок»" answerTrue="3" pathOfImage="../bin/image/1.png"/>
+	<quest id="9" question="Как называлась первая кондитерская фабрика в Ярославле?" answer1="«Братья Кузнецовы»" answer2="«Братья Елисеевы»" answer3="«Бельфор»" answer4="«Фрекенбок»" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
 
-	<quest id="10" question="При каком ярославском правителе города появился первый электрический трамвай?" answer1="И. А. Вахрамеев" answer2="А. М. Безобразов" answer3="А. П. Мельгунов" answer4="В. В. Волончунас" answerTrue="1" pathOfImage="../bin/image/1.png"/>
+	<quest id="10" question="При каком ярославском правителе города появился первый электрический трамвай?" answer1="И. А. Вахрамеев" answer2="А. М. Безобразов" answer3="А. П. Мельгунов" answer4="В. В. Волончунас" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
 	<quest id="11" question="Какой храм изображен на фотографии?" answer1="Церковь Иоанна Крестителя" answer2="Церковь Рождества Христова" answer3="Церковь Ильи Пророка" answer4="Церковь Николы Надеина" answerTrue="3" pathOfImage="../bin/image/11.jpg"/>
-	<quest id="12" question="Вопрос номер 12" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
-	<quest id="13" question="Вопрос номер 13" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
-	<quest id="14" question="Вопрос номер 14" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
-	<quest id="15" question="Вопрос номер 15" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" pathOfImage="../bin/image/1.png"/>
-	<quest id="16" question="Вопрос номер 16" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="4" pathOfImage="../bin/image/1.png"/>
-	<quest id="17" question="Вопрос номер 17" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
-	<quest id="18" question="Вопрос номер 18" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" pathOfImage="../bin/image/1.png"/>
-	<quest id="19" question="Вопрос номер 19" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="1" pathOfImage="../bin/image/1.png"/>
-	<quest id="20" question="Вопрос номер 20" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="3" pathOfImage="../bin/image/1.png"/>
-	<quest id="21" question="Вопрос номер 21" answer1="ответ A" answer2="ответ B" answer3="ответ C" answer4="ответ D" answerTrue="2" pathOfImage="../bin/image/1.png"/>
+
+	<quest id="12" question="Кто основал Ярославль?" answer1="Ярослав Мудрый" answer2="Ярослав Вселоводович" answer3="Князь Владимир" answer4="Княгиня Ольга" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="13" question="Кто изображён на гербе города?" answer1="Волк" answer2="Олень" answer3="Медведь" answer4="Рыба" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="14" question="Какая легендарная битва произошла на подступах к городу в 1257 году?" answer1="Битва на реке Сить" answer2="Битва на Туговой горе" answer3="Битва на Калке" answer4="Битва на реке Которосль" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="15" question="Какое известное литературное произведение Древней Руси связано с Ярославлем?" answer1="Русская правда" answer2="Задонщина" answer3="Слово о полку Игореве" answer4="Путешествие за три моря" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="16" question="Какое здание Ярославля имеет такое украшение?" answer1="Областная администрация" answer2="Музей истории города" answer3="Планетарий" answer4="Театр им. Федора Волкова" answerTrue="4" pathOfImage="../bin/image/16.jpg"/>
+
+	<quest id="17" question="В каком году город праздновал своё тысячелетие?" answer1="2000" answer2="2010" answer3="2005" answer4="1990" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="18" question="Кто захватил Ярославль в начале 17 века?" answer1="Польша" answer2="Германия" answer3="Франция" answer4="Швеция" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="19" question="Какое событие произошло в городе в июле 1918 ?" answer1="Наводнение" answer2="Выборы нового губернатора" answer3="Белогвардейский мятеж" answer4="Провозглашение независимоти" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="20" question="На пересечении каких рек был основан Ярославль?" answer1="Солоница и Соть" answer2="Соть и Волга" answer3="Которосль и Соть" answer4="Которосль и Волга" answerTrue="4" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="21" question="Как называется Ярославская хоккейная команда?" answer1="Торпедо" answer2="Локомотив" answer3="Динамо" answer4="Шинник" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="22" question="Какая ярославская церковь изображена на тысячерублевой купюре?" answer1="Ильи Пророка" answer2="Иоанна Предтечи" answer3="Крещения" answer4="Николы Надеина" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="23" question="Какая церковь была разрушена в 1937 году и восстановлена к празднованию 1000-летия Ярославля?" answer1="Иоанна Предтечи" answer2="Ильи Пророка" answer3="Успения Пресвятой Богородицы" answer4="Михаила Архангела" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="24" question="Какой город является побратимом Ярославля?" answer1="Берлингтон" answer2="Милан" answer3="Филадельфия" answer4="Токио" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="25" question="Сколько раз Ярославский хоккейный клуб Локомотив становился чемпионом России?" answer1="1" answer2="2" answer3="3" answer4="4" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="26" question="Ярославль один из древнейших городов России и недавно отметил тысячелетие, а в каком году основан Ярославль?" answer1="997" answer2="1000" answer3="1010" answer4="1013" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="27" question="Центр города Ярославля внесен в перечень всемирного наследия ЮНЕСКО, а к какому веку относится большинство архитектурных шедевров? " answer1="18" answer2="17" answer3="16" answer4="15" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="28" question="В 1750 году в Ярославле Ф. Г. Волков основал первый общедоступный …." answer1="Театр" answer2="Музей" answer3="Кружок умелые руки" answer4="Ликеро-водочный завод" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="29" question="Вторая половина 20 века стала временем начала космических полетов. Отличились в этой области и ярославцы, один из жителей города стал космонавтом. Назовите его имя" answer1="Гагарин" answer2="Титов" answer3="Терешкова" answer4="Леонов" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
 </questions>

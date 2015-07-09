@@ -1,7 +1,6 @@
 package 
 {
 	import flash.display.Sprite;
-	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -13,7 +12,7 @@ package
 	import flash.system.Capabilities;
 	import flash.display.StageScaleMode;
 	import flash.display.StageAlign;
-	
+	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
     import flash.net.URLRequest;
     import flash.net.URLVariables;
@@ -31,14 +30,10 @@ package
 		{
 			super();
 			
-			//if (stage) init();
-			//else addEventListener(Event.ADDED_TO_STAGE, init);
-			
 			b = new background();
 			b.width = Capabilities.screenResolutionY;
 			b.height = Capabilities.screenResolutionY;
-			//b.x = b.width / 3;
-			this.addChild(b);//new background());
+			this.addChild(b);
 			
 			addChild(initQuizButton());						
 			addChild(initQuestionsButton());
@@ -53,32 +48,17 @@ package
 		private function startQuiz(event:MouseEvent):void {
 			this.removeChildren();
 			this.addChild(new QuizState());
-			trace("in startQuize");
 		}
 		
 		private function startQuestions(event:MouseEvent):void {	
-			
-			var url:String = "http://localhost:8080/WebApplication1/NewServlet";
-            var request:URLRequest = new URLRequest(url);
-            var variables:URLVariables = new URLVariables();
-            variables.exampleSessionId = new Date().getTime();
-            variables.exampleUserLabel = "guest";
-            request.data = variables;
-            navigateToURL(request);
-			
-			this.addChild(new FormLogin());
-			trace("Hello!!!")
+			this.removeChildren();
+			this.addChild(new OlimpicState())
 		}
 
 		private function initQuizButton():Button {
-			
-			//var upQuiz:upButtonQuiz = new upButtonQuiz();			
-			//var downQuiz:downButtonQuiz = new downButtonQuiz();			
-			//var overQuiz:overButtonQuiz = new overButtonQuiz();			
-			//var quizButton:SimpleButton = new SimpleButton(upQuiz, overQuiz, downQuiz, upQuiz);
 			var quizButton:Button = new Button(_colors);
 			quizButton.label = Language.getText(Language.START_QUIZ);
-			quizButton.width = this.width / 4;
+			quizButton.width = this.width / 1.9;
 			quizButton.height = this.height / 11;
 			quizButton.x = this.width / 2 - quizButton.width / 2;
 			quizButton.y = this.height / 1.8;
@@ -87,13 +67,9 @@ package
 		}
 		
 		private function initQuestionsButton():Button {
-			//var upQuestions:upButtonQuestions = new upButtonQuestions();
-			//var overQuestions:overButtonQuestions = new overButtonQuestions();
-			//var downQuestions:downButtonQuestions = new downButtonQuestions();
-			//var questionsButton:SimpleButton = new SimpleButton(upQuestions, overQuestions, downQuestions, upQuestions);
 			var questionsButton:Button = new Button(_colors);
 			questionsButton.label = Language.getText(Language.START_QUESTIONS);
-			questionsButton.width = this.width / 4;
+			questionsButton.width = this.width / 1.9;
 			questionsButton.height = this.height / 11;
 			questionsButton.x = this.width / 2 - questionsButton.width / 2;
 			questionsButton.y = this.height / 1.4;

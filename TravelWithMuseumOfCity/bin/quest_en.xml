@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <questions>
-	<quest id="1" question="Question number 1" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="2" />
-	<quest id="2" question="Question number 2" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="3" question="Question number 3" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="1" />
-	<quest id="4" question="Question number 4" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="5" question="Question number 5" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="6" question="Question number 6" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="7" question="Question number 7" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="8" question="Question number 8" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="9" question="Question number 9" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="10" question="Question number 10" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="1" />
-	<quest id="11" question="Question number 11" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="3" />
-	<quest id="12" question="Question number 12" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="13" question="Question number 13" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="3" />
-	<quest id="14" question="Question number 14" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="15" question="Question number 15" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="2" />
-	<quest id="16" question="Question number 16" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="4" />
-	<quest id="17" question="Question number 17" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="3" />
-	<quest id="18" question="Question number 18" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="1" />
-	<quest id="19" question="Question number 19" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="1" />
-	<quest id="20" question="Question number 20" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="3" />
-	<quest id="21" question="Question number 21" answer1="answer A" answer2="answer B" answer3="answer C" answer4="answer D" answerTrue="2" />
+	<quest id="1" question="Who founded Yaroslavl?" answer1="Yaroslav the Wise" answer2="Yaroslav Vsevolodovich" answer3="Vladimir the Saint" answer4="Duchess Olga" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="2" question="What animal is depicted on the coat of arms of the city?" answer1="A wolf" answer2="A deer" answer3="A bear" answer4="A fish" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="3" question="What legendary battle took place on the approach to the city in 1257?" answer1="Battle of the Sit" answer2="Battle on Tugova Mountain" answer3="Battle on the Kalka" answer4="Battle of the Kotorosl" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="4" question="What church is pictured below?" answer1="Church of John the Baptist" answer2="Church of the Nativity" answer3="Church of Elijah the Prophet" answer4="Church of Nicholas Nadein" answerTrue="3" pathOfImage="../bin/image/11.jpg"/>
+
+	<quest id="5" question="What famous literary work of Ancient Russia is connected with Yaroslavl?" answer1="Russkaya Pravda" answer2="Zadonshina" answer3="The word about Igor's regiment" answer4="Journey beyond the three seas" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="6" question="What building in Yaroslavl has the façade depicted below?" answer1="The regional administration" answer2="The Museum of city history" answer3="The planetarium" answer4="Volkov Theater" answerTrue="4" pathOfImage="../bin/image/16.jpg"/>
+
+	<quest id="7" question="In what year did the city celebrate its Millennium Anniversary?" answer1="2000" answer2="2010" answer3="2005" answer4="1990" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="8" question="Who captured Yaroslavl in the early 1600s?" answer1="Poles" answer2="Germans" answer3="French" answer4="Swedes" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="9" question="What event occurred in Yaroslavl in July 1918?" answer1="Flood" answer2="Election of a new Governor" answer3="White Guards mutiny" answer4="Proclamation of the independence of Yaroslavl" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="10" question="Yaroslavl is one of the oldest cities in Russia and has recently celebrated its millennium anniversary, so in what year was the city founded?" answer1="997" answer2="1000" answer3="1010" answer4="1013" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="11" question="Yaroslavl’s city center is included in UNESCO’s list of World Heritage sites. To what century do most of the architectural masterpieces belong?" answer1="15th" answer2="16th" answer3="17th" answer4="18th" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="12" question="In 1750, F.G. Volkov founded the first public...." answer1="Theatre" answer2="Museum" answer3="DIY Club" answer4="Alcohol Distillery plant" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="13" question="The second half of the 20th century marked the beginning of spaceflight. One famous Russian cosmonaut was originally from Yaroslavl. His/her last name was:" answer1="Gagarin" answer2="Titov" answer3="Tereshkova" answer4="Leonov" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="14" question="Yaroslavl was founded at the intersection of which two rivers?" answer1="The Solonitca and the Sot" answer2="The Sot and the Volga" answer3="The Kotorosl and the Sot" answer4="The Kotorosl and the Volga" answerTrue="4" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="15" question="What is the name of Yaroslavl’s main hockey team? " answer1="Lokomotiv" answer2="Torpedo" answer3="Dinamo" answer4="Shinnik" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="16" question="What Church is depicted on the 1000 ruble banknote?" answer1="The church of Ilya the Prophet" answer2="The church of John the Baptist" answer3="The church of the Epiphany" answer4="The church of St. Nicolas Nadein" answerTrue="2" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="17" question="What church was demolished in 1937 and later restored for the Yaroslavl Millennium Anniversary celebration?" answer1="The church of John the Baptist" answer2="The church of Ilya the Prophet" answer3="The Cathedral of the Assumption" answer4="The church of St. Michael the Archangel" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="18" question="What animal is depicted on the coat of arms of the city of Yaroslavl?" answer1="A fish with golden scales" answer2="A white rabbit" answer3="A bear with an axe" answer4="A red fox" answerTrue="3" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="19" question="Which of the following towns is one of the sister cities of Yaroslavl?" answer1="Burlington" answer2="Milan" answer3="Philadelphia" answer4="Tokyo" answerTrue="1" pathOfImage="../bin/image/wq.png"/>
+
+	<quest id="20" question="How many times has the Yaroslavl hockey team won the Russian Hockey Championship?" answer1="0" answer2="1" answer3="2" answer4="3" answerTrue="4" pathOfImage="../bin/image/wq.png"/>
 </questions>

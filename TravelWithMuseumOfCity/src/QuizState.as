@@ -143,7 +143,6 @@ package
 			}
 			massImage[numberQuestion].filters = [f];
 			initQuestion();
-			
 		}
 		
 		// загрузка xml файла
@@ -161,7 +160,6 @@ package
 		private function parserXML():void {
 			var data:XMLList = xml.children();
 			generateTenRandomQuestion(data.length());			
-			/////////////////// взять numbers и пробежать по всем значениям, в свою очередь значения подставлять в child("quest")[?]
 			for (var i:int = 0; i < 10; i++) {
 				var j:int = numbers[i];
 				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1], 
@@ -174,7 +172,6 @@ package
 													)
 							);
 			}
-			trace(content.length);
 			initQuestion();
 		}
 		// генерирование номеров вопросов для викторины
@@ -190,20 +187,23 @@ package
 		
 		public function initQuestion():void {
 			removeChild(pic);
+			// настройка формата текста
 			var format:TextFormat = new TextFormat();
             format.font = "Verdana";
-            format.color = 0xFF0000;
+            format.color = 0x0000FF;
             format.size = 20;
             format.underline = true;
+			format.bold = true;
 			tfQuestion.defaultTextFormat = format;
 			
+			// натройка свойств текста
 			tfQuestion.width = 400;
 			tfQuestion.multiline = true;
 			tfQuestion.wordWrap = true;
 			tfQuestion.height = 100;
 			tfQuestion.width = this.height / 1.3;
 			
-			
+			// добавление текста вопроса и ответов на экранные объекты
 			tfQuestion.text = content[numberQuestion].getQuestion();		
 			answerButtonA.label = content[numberQuestion].getAnswerA();
 			answerButtonB.label = content[numberQuestion].getAnswerB();
@@ -212,9 +212,7 @@ package
 			
 			pic.load(new URLRequest(content[numberQuestion].getPic()));
 			pic.x = bg.width/3;
-			//pic.y = 170;
 			pic.y = bg.height / 3 - 100;
-			//addChild(pic);
 			addChild(pic)
 		}
 		
@@ -286,20 +284,15 @@ package
 			} else if (e.target == answerButtonD && content[numberQuestion].getTrueAnswer() == 4) {
 				score = score + 1;
 			}
-		// изменение картинки
+		// изменение навигациооной кнопки
 			massImage[numberQuestion].removeEventListener(MouseEvent.CLICK, onSelectQuestion);
 			massImage[numberQuestion].alpha = 0.1;
 			massImage[numberQuestion].filters = null;
 			massBool[numberQuestion] = false;
-		/// НУЖНА проверка
-			
+		// активирование следующей навигационной кнопки
 			var flag:Boolean = checkNext();
 			checkFull(flag);
-		
-		
-			//numberQuestion = numberQuestion + 1;
-			
-			//if (numberQuestion >= 10 || e.target == exitQuizState) {
+		// проверка нажатия кнопки завершения теста
 			if (e.target == exitQuizState) {
 				this.removeChildren();
 				var rq:QuizResult = new QuizResult(score);

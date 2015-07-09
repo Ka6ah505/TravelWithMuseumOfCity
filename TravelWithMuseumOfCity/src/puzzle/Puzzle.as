@@ -10,7 +10,6 @@ package puzzle
 		public function Puzzle() 
 		{
 			super();
-			
 		}
 		
 	}

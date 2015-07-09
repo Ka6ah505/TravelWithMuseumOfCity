@@ -41,8 +41,9 @@ package
 			//свойства объекта, задающего форматирование текста
 			myFormat.align = "center";
 			myFormat.font = "Tahoma";
-			myFormat.size = 13;
-			myFormat.color = 0xFFFFFF;	
+			myFormat.size = 12;
+			myFormat.color = 0x0000FF;
+			myFormat.bold = true;
  
 			//стиль линии
 			this.graphics.lineStyle(0, 0x820F26, 60, true, "none", "square", "round");
