@@ -15,11 +15,12 @@ package puzzle
 	{
 		
 		// сетка пазла
-        private var grid:PuzzleGrid;
+        public var grid:PuzzleGrid;
+		public var grids:PuzzleGridSmall;
 		
-		private var bitmapData:BitmapData;
+		public var bitmapData:BitmapData;
 		
-		public function PuzzleApp(x:int, y:int, i:int) {
+		public function PuzzleApp(x:int, y:int, i:int, level:String) {
 			//this.stage.scaleMode = StageScaleMode.NO_SCALE;
             //this.stage.align = StageAlign.TOP_LEFT;
             this.graphics.lineStyle(1, 0x999999, 1);
@@ -36,24 +37,48 @@ package puzzle
 			} else {
 				bitmapData = new armor();
 			}
-			//bitmapData = new jar();
+				//bitmapData = new jar();
             //
-            resetGrid(x, y, i);
+			if (level=="normal") {
+				resetGrid4(x, y, i);
+			} else if(level=="hight"){
+				resetGrid(x, y, i);
+				//grid.Mix(bitmapData);
+			}
+            //resetGrid(x, y, i);
+			//grid.Mix(bitmapData);
+			//grid.Strogo(bitmapData);
 		}
         
-        private function resetGrid(x:int, y:int, i:int):void {
+        public function resetGrid4(x:int, y:int, i:int):void {
 			if (grid != null) {
                 if (this.contains(grid)) this.removeChild(grid);
             }
             //
             grid = new PuzzleGrid(4, 5, i);
 			grid.x = x;
-            grid.y = y/1.5;
+            grid.y = y / 1.5;
+			//grid.scaleX = 1600 / grid.width;
+			//grid.scaleY = 1600 / grid.height;
             this.addChild(grid);
             // передаем картинку пазлу
             grid.Image = bitmapData;
         }
 		
+		public function resetGrid(x:int, y:int, i:int):void {
+			if (grids != null) {
+                if (this.contains(grid)) this.removeChild(grid);
+            }
+            //
+            grids = new PuzzleGridSmall(2, 2, i);
+			grids.x = x;
+            grids.y = y / 1.5;
+			grids.scaleX = 600 / grids.width;
+			grids.scaleY = 600 / grids.height;
+            this.addChild(grids);
+            // передаем картинку пазлу
+            grids.Image = bitmapData;
+        }
 	}
 
 }

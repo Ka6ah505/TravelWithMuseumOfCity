@@ -9,12 +9,13 @@ package puzzle
 	 * ...
 	 * @author sq
 	 */
-	public class PuzzleGrid extends Sprite 
+	public class PuzzleGridSmall extends Sprite 
 	{
 		// массив всех элементов пазла
         private var elements:Vector.<PuzzleElement>;
 		
-		public function PuzzleGrid(w:int, h:int, answer:int) {
+		public function PuzzleGridSmall(w:int, h:int, answer:int) 
+		{
 			super();
 			// создаем массив для хранения всех элементов пазла
             elements = new Vector.<PuzzleElement>();
@@ -111,59 +112,31 @@ package puzzle
 					grid[i + 'x' + j] = newElement;
                 }
             }
-				splicePuzzle(answer);
+			splicePuzzle(answer);
 				
 			for (var k:int = 0; k < elements.length; k++) {
 				this.addChild(elements[k]);
 			}
 		}
-		
 		public function splicePuzzle(i:int):void {
 			switch(i) {
 				case 0 :
-					elements.splice(6, 3);
-					elements.splice(8, 3);
+					elements.splice(0, 4);
 					break;
 				case 1 :
-					elements.splice(6, 3);
-					elements.splice(8, 3);
+					elements.splice(1, 3);
 					break;
 				case 2 :
-					elements.splice(6, 3);
-					elements.splice(8, 3);
+					elements.splice(2, 2);
 					break;	
 				case 3:
-					elements.splice(7, 2);
-					elements.splice(9, 3);
+					//elements.splice(2, 2);
+					elements.splice(3, 1);
 					break;
 				case 4 :
-					elements.splice(7, 2);
-					elements.splice(9, 3);
-					break;
-				case 5:
-					elements.splice(8, 1);
-					elements.splice(10, 3);
-					break;
-				case 6:
-					elements.splice(11, 3);
-					break;
-				case 7:
-					elements.splice(12, 2);
-					break;
-				case 8 :
-					elements.splice(13, 1);
-					break;
-				case 9 :
-					elements.splice(13, 1);
-					break;
-				case 10:
-					break;
-				default:
 					break;
 			}
 		}
-		
-		
 		
 		 /**
          * Задать картинку пазлу
@@ -204,5 +177,7 @@ package puzzle
                 element.Image = bitmapData;
             }
         }
+		
 	}
+
 }

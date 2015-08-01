@@ -1,5 +1,5 @@
 package 
-{
+{	
 	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.display.MovieClip;
@@ -28,9 +28,9 @@ package
 	
 	/**
 	 * ...
-	 * @author sega
+	 * @author sq
 	 */
-	public class QuizState extends Sprite 
+	public class HightQuizState extends Sprite
 	{
 		private var bg:backgroundGame;
 		private var tfQuestion:TextField = new TextField();
@@ -46,13 +46,13 @@ package
 		public var content:Array = [];
 		public var score:int = 0;
 		public var massImage:Array = [];
-		public var massBool:Array = new Array(true, true, true, true, true, true, true, true, true, true);
+		public var massBool:Array = new Array(true, true, true, true);
 		public var l:Loader = new Loader();
 		public var f:GlowFilter = new GlowFilter();
 		public var pic:Loader = new Loader();
 		public var puzzle:PuzzleApp
 		
-		public function QuizState() {
+		public function HightQuizState() {
 			super();
 			addChild(pic);
 			init();
@@ -63,7 +63,7 @@ package
 			
 			loader.dataFormat = URLLoaderDataFormat.TEXT;	
 			try {
-				loader.load(new URLRequest(Language.getText(Language.QUEST_FILE)));
+				loader.load(new URLRequest(Language.getText(Language.QUEST2_FILE)));
 			}catch (error:SecurityError) {
                 trace("A SecurityError has occurred.");
 			}
@@ -78,15 +78,15 @@ package
 		
 		private function initSelectQuestion():void {
 			
-			for (var i:int = 0; i <= 9; i++ ) {
+			for (var i:int = 0; i <= 3; i++ ) {
 				var l:Loader = new Loader();
 				l.load(new URLRequest("def1.png"));
-				l.x = 50 * i + bg.width / 5;
+				l.x = 100 * i + bg.width / 4;
 				l.y = bg.width - bg.width / 3;
 				
 				var tempNumber:TextField = new TextField();
 				tempNumber.text = (i + 1)+".";
-				tempNumber.x = 50 * i + bg.width / 5 - 15;
+				tempNumber.x = 100 * i + bg.width / 4 - 15;
 				tempNumber.y = bg.width - bg.width / 3 + 10;
 				tempNumber.mouseEnabled = false;
 				addChild(tempNumber);
@@ -95,7 +95,7 @@ package
 				massImage[i].addEventListener(MouseEvent.CLICK, onSelectQuestion);
 			}
 			
-			for (var ii:int = 0; ii <= 9; ii++ ) {
+			for (var ii:int = 0; ii <= 3; ii++ ) {
 				addChild(massImage[ii]);
 			}	
 			massImage[numberQuestion].filters = [f];
@@ -122,24 +122,6 @@ package
 				case massImage[3]:
 					numberQuestion = 3;
 					break;
-				case massImage[4]:
-					numberQuestion = 4;
-					break;
-				case massImage[5]:
-					numberQuestion = 5;
-					break;
-				case massImage[6]:
-					numberQuestion = 6;
-					break;
-				case massImage[7]:
-					numberQuestion = 7;
-					break;
-				case massImage[8]:
-					numberQuestion = 8;
-					break;
-				case massImage[9]:
-					numberQuestion = 9;
-					break;
 				default:
 					break;
 			}
@@ -164,7 +146,7 @@ package
 		private function parserXML():void {
 			var data:XMLList = xml.children();
 			generateTenRandomQuestion(data.length());			
-			for (var i:int = 0; i < 10; i++) {
+			for (var i:int = 0; i <= 3; i++) {
 				var j:int = numbers[i];
 				content.push(new QuestionsAndAnswer(xml.child("quest")[j].attributes()[1], 
 													xml.child("quest")[j].attributes()[2], 
@@ -182,7 +164,7 @@ package
 		public function generateTenRandomQuestion(length:int):void {
 			for (var i:int = 0; i < length; i++) numbers[i] = i;
 			numbers.sort(randomSort);
-			numbers.splice(10);
+			numbers.splice(4);
 		}
 		// перемешиванте
 		public function randomSort(elementA:Object, elementB:Object):Number {
@@ -195,16 +177,16 @@ package
 			var format:TextFormat = new TextFormat();
             format.font = "Verdana";
             format.color = 0x0000FF;
-            format.size = 20;
+            format.size = 18;
             format.underline = true;
 			format.bold = true;
 			tfQuestion.defaultTextFormat = format;
 			
 			// натройка свойств текста
-			tfQuestion.width = 400;
+			//tfQuestion.width = 400;
 			tfQuestion.multiline = true;
 			tfQuestion.wordWrap = true;
-			tfQuestion.height = 100;
+			tfQuestion.height = 170;
 			tfQuestion.width = this.height / 1.3;
 			
 			// добавление текста вопроса и ответов на экранные объекты
@@ -216,7 +198,7 @@ package
 			
 			pic.load(new URLRequest(content[numberQuestion].getPic()));
 			pic.x = bg.width/3;
-			pic.y = bg.height / 3 - 100;
+			pic.y = bg.height / 2.5 - 100;
 			addChild(pic)
 		}
 		
@@ -248,20 +230,20 @@ package
 			addChild(answerButtonD);
 			addChild(exitQuizState);
 			answerButtonA.x = 50 ;
-			answerButtonA.y = bg.width / 2.2;
+			answerButtonA.y = bg.width / 1.9;
 			answerButtonA.height = 35;
 			//answerButtonA.width = 200;
 			answerButtonA.width = bg.width / 3;
 			answerButtonB.x = bg.width/3  - 50 + bg.width / 3;
-			answerButtonB.y = bg.width / 2.2;
+			answerButtonB.y = bg.width / 1.9;
 			answerButtonB.height = 35;
 			answerButtonB.width = bg.width / 3;
 			answerButtonC.x = 50 ;
-			answerButtonC.y = bg.width / 2.2 + 40;
+			answerButtonC.y = bg.width / 1.9 + 40;
 			answerButtonC.height = 35;
 			answerButtonC.width = bg.width / 3;
 			answerButtonD.x = 2*bg.width/3 - 50;;
-			answerButtonD.y = bg.width / 2.2 + 40;
+			answerButtonD.y = bg.width / 1.9 + 40;
 			answerButtonD.height = 35;
 			answerButtonD.width = bg.width / 3;
 			exitQuizState.width = bg.width / 3.5;
@@ -299,7 +281,7 @@ package
 		// проверка нажатия кнопки завершения теста
 			if (e.target == exitQuizState) {
 				this.removeChildren();
-				var rq:QuizResult = new QuizResult(score);
+				var rq:HightQuizResult = new HightQuizResult(score);
 				this.addChild(rq);
 			} else {
 				initQuestion();
@@ -309,21 +291,21 @@ package
 		
 		private function checkMass():void {
 			var count:int = 0;
-			for (var i:int = 0; i <= 9; i++) {
+			for (var i:int = 0; i <= 3; i++) {
 				if (!massBool[i]) {
 					count++;
 				}
 			}
-			if (count == 10) {
+			if (count == 4) {
 				this.removeChildren();
-				var rq:QuizResult = new QuizResult(score);
+				var rq:HightQuizResult = new HightQuizResult(score);
 				this.addChild(rq);
 			}
 		}
 		
 		private function checkFull(flag:Boolean):void {
 			if(!flag) {
-				for (var i:int = 0; i <= 9; i++ ) {
+				for (var i:int = 0; i <= 3; i++ ) {
 					if (massBool[i]) {
 						numberQuestion = i;
 						massImage[numberQuestion].filters = [f];
@@ -335,7 +317,7 @@ package
 		}
 		
 		private function checkNext():Boolean {
-			for (var i:int = numberQuestion; i <= 9; i++ ) {
+			for (var i:int = numberQuestion; i <= 3; i++ ) {
 				if (massBool[i]) {
 					numberQuestion = i;
 					massImage[numberQuestion].filters = [f];

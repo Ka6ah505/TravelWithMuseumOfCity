@@ -52,7 +52,7 @@ package
 		
 		private function startQuestions(event:MouseEvent):void {	
 			this.removeChildren();
-			this.addChild(new OlimpicState())
+			this.addChild(new HightQuizState())
 		}
 
 		private function initQuizButton():Button {

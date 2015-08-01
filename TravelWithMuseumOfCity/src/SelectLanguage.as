@@ -19,9 +19,11 @@ package
 		//private var buttonEN:Button;
 		private var flagRU: Array;
 		private var flagEU:Array;
+		private var flagDE:Array;
 		
 		private	var current_frame: int;
 		private	var _timer:Timer;
+		private var s:clickToFlag = new clickToFlag();
 		
 		public function SelectLanguage() 
 		{
@@ -30,31 +32,11 @@ package
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
 			addChild(bg);
-			/*var _colors:Array = [0xFfffff, 0xEC748B, 0xC13A59, 0xA81230];
-			buttonEN = new Button(_colors);
-			buttonRU = new Button(_colors);
-			
-			buttonEN.label = "English";
-			buttonRU.label = "Русский";
-			
-			buttonEN.width = this.width/6;
-			buttonEN.height = this.height / 11;
-			buttonEN.x = this.width / 2 - buttonEN.width / 2;
-			buttonEN.y = this.height / 1.8;
-			
-			buttonRU.width = this.width / 6;
-			buttonRU.height = this.height / 11;
-			buttonRU.x = this.width / 2 - buttonRU.width / 2;
-			buttonRU.y = this.height / 1.4;
-			
-			buttonEN.addEventListener(MouseEvent.CLICK, handlerButton);
-			buttonRU.addEventListener(MouseEvent.CLICK, handlerButton);
-			addChild(buttonEN);
-			addChild(buttonRU);*/
 			
 			current_frame = 1;
 			flagRU = new Array();
 			flagEU = new Array();
+			flagDE = new Array();
 
 			flagRU.push(new flasgRU_1);
 			flagRU.push(new flasgRU_2);
@@ -98,23 +80,51 @@ package
 			flagEU.push(new flagEU_19);
 			flagEU.push(new flagEU_20);
 			
+			flagDE.push(new flagDE_1);
+			flagDE.push(new flagDE_2);
+			flagDE.push(new flagDE_3);
+			flagDE.push(new flagDE_4);
+			flagDE.push(new flagDE_5);
+			flagDE.push(new flagDE_6);
+			flagDE.push(new flagDE_7);
+			flagDE.push(new flagDE_8);
+			flagDE.push(new flagDE_9);
+			flagDE.push(new flagDE_10);
+			flagDE.push(new flagDE_11);
+			flagDE.push(new flagDE_12);
+			flagDE.push(new flagDE_13);
+			flagDE.push(new flagDE_14);
+			flagDE.push(new flagDE_15);
+			flagDE.push(new flagDE_16);
+			flagDE.push(new flagDE_17);
+			flagDE.push(new flagDE_18);
+			flagDE.push(new flagDE_19);
+			flagDE.push(new flagDE_20);
+			
 			for ( var i:int = 0; i < 20; i++ ) {
 				addChild(flagRU[i]);
 				addChild(flagEU[i]);
+				addChild(flagDE[i]);
 				flagRU[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto1);
 				flagEU[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto2);
+				//flagDE[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto3);
 				
-				(Sprite)(flagRU[i]).visible = false;
-				(Sprite)(flagRU[i]).x = this.width / 2 - 100;
-				(Sprite)(flagRU[i]).y = this.height / 1.5;
+				(Sprite)(flagDE[i]).visible = false;
+				(Sprite)(flagDE[i]).x = this.width / 2 - 100;
+				(Sprite)(flagDE[i]).y = this.height / 1.5;
 				
 				(Sprite)(flagEU[i]).visible = false;
 				(Sprite)(flagEU[i]).x = this.width / 2 - 100;
 				(Sprite)(flagEU[i]).y = this.height / 2.3;
 				//(MovieClip)(zomby_frames[i]).addEventListener(MouseEvent.CLICK, handlerButto);
+				
+				(Sprite)(flagRU[i]).visible = false;
+				(Sprite)(flagRU[i]).x = this.width / 2 - 100;
+				(Sprite)(flagRU[i]).y = this.height / 4.9;
 			}
 			(Sprite)(flagRU[0]).visible = true;
 			(Sprite)(flagEU[0]).visible = true;
+			(Sprite)(flagDE[0]).visible = true;
 			_timer = new Timer(100);
 			_timer.addEventListener("timer", onTimer); 
 			_timer.start();
@@ -123,6 +133,7 @@ package
 		public function onTimer(event:TimerEvent):void { 
 			(Sprite)(flagRU[current_frame-1]).visible = false;
 			(Sprite)(flagEU[current_frame-1]).visible = false;
+			(Sprite)(flagDE[current_frame-1]).visible = false;
 			if ( current_frame < 20 ) {
 				current_frame += 1;
 			} else {
@@ -130,20 +141,11 @@ package
 			}
 			(Sprite)(flagRU[current_frame-1]).visible = true;
 			(Sprite)(flagEU[current_frame-1]).visible = true;
+			(Sprite)(flagDE[current_frame-1]).visible = true;
 		}
 		
-		/*private function handlerButton(e:MouseEvent):void { 
-			if (e.target == buttonEN) {
-				Language.setEnglish();
-			} else if (e.target == buttonRU) {
-				Language.setRussian();
-			}
-			removeChildren();
-			addChild(new MainMenu());
-			
-		}*/
-		
 		private function handlerButto1(e:MouseEvent):void { 
+			s.play();
 			Language.setRussian();
 			removeChildren();
 			addChild(new MainMenu());
@@ -151,7 +153,16 @@ package
 		}
 		
 		private function handlerButto2(e:MouseEvent):void { 
+			s.play();
 			Language.setEnglish();
+			removeChildren();
+			addChild(new MainMenu());
+			
+		}
+		
+		private function handlerButto3(e:MouseEvent):void { 
+			s.play();
+			Language.setDeutch();
 			removeChildren();
 			addChild(new MainMenu());
 			

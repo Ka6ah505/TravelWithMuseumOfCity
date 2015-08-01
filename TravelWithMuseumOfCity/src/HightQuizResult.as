@@ -13,18 +13,18 @@ package
 	 * ...
 	 * @author sq
 	 */
-	public class QuizResult extends Sprite
+	public class HightQuizResult extends Sprite 
 	{
-		
 		private var tfResult:TextField = new TextField();
 		private var backButton:Button;
 		
-		public function QuizResult(i:int) {
+		public function HightQuizResult(i:int) 
+		{
 			super();
 			init(i);
 		}
 		
-		private function init(i:int):void {
+		private function init(answer:int):void {
 			var bg:backgroundGame = new backgroundGame();
 			bg.width = Capabilities.screenResolutionY;
 			bg.height = Capabilities.screenResolutionY;
@@ -45,13 +45,14 @@ package
 			format.bold = true;
             format.underline = true;
 			tfResult.defaultTextFormat = format;
-			if (i < 5) {
+			tfResult.text = ""+answer;
+			/*if (i < 5) {
 				tfResult.text = Language.getText(Language.QUESTIONSANSWER_Bad) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
 			} else if (i >= 5 && i <= 9) {
 				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Good) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
 			} else {
 				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Perfect) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
-			}
+			}*/
 			
 			tfResult.mouseEnabled = false;
 			
@@ -69,7 +70,7 @@ package
 			addChild(bg);
 			addChild(tfResult);
 			addChild(backButton);
-			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2.6, i, "normal");
+			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2.6, answer, "hight");
 			
 			addChild(puzzle);
 		}

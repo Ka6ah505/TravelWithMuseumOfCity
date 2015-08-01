@@ -57,6 +57,7 @@
     <element path="lib\flagRU.swc" />
     <element path="lib\flagEU.swc" />
     <element path="lib\QuizState.swc" />
+    <element path="lib\flagDE.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
