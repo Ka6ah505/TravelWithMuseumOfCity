@@ -8,6 +8,8 @@ package
 	import flash.display.Stage;
 	import puzzle.PuzzleApp;
 	import flash.system.Capabilities;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	/**
 	 * ...
@@ -16,7 +18,9 @@ package
 	public class HightQuizResult extends Sprite 
 	{
 		private var tfResult:TextField = new TextField();
+		private var tfInviation:TextField = new TextField();
 		private var backButton:Button;
+		private var feedbackButton:Button;
 		
 		public function HightQuizResult(i:int) 
 		{
@@ -45,14 +49,8 @@ package
 			format.bold = true;
             format.underline = true;
 			tfResult.defaultTextFormat = format;
-			tfResult.text = ""+answer;
-			/*if (i < 5) {
-				tfResult.text = Language.getText(Language.QUESTIONSANSWER_Bad) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
-			} else if (i >= 5 && i <= 9) {
-				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Good) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
-			} else {
-				tfResult.text = Language.getText(Language.QUESTIONS_ANSWER_Perfect) +"\n"+ Language.getText(Language.RESULT_TEXT) + i;
-			}*/
+			
+			tfResult.text = Language.getText(Language.RESULT_TEXT) + answer + Language.getText(Language.RESULT_TEXT_SECOND);;
 			
 			tfResult.mouseEnabled = false;
 			
@@ -61,23 +59,51 @@ package
 			backButton = new Button(_colors);
 			backButton.width = 180;
 			backButton.height = 50;
-			backButton.x = backButton.width/5 + bg.width / 3;
+			backButton.x = bg.width / 3 - bg.width/7;
 			backButton.y = bg.width / 1.23;
 			backButton.label = Language.getText(Language.BACK_STATE);
 			backButton.addEventListener(MouseEvent.CLICK, handlerButton);
+			
+			feedbackButton = new Button(_colors);
+			feedbackButton.width = 180;
+			feedbackButton.height = 50;
+			feedbackButton.x = bg.width / 3 + bg.width/4;
+			feedbackButton.y = bg.width / 1.23;
+			feedbackButton.label = Language.getText(Language.FEEDBACKB);
+			feedbackButton.addEventListener(MouseEvent.CLICK, handlerButton);
+			
+			tfInviation.x = bg.width / 3 - 70;
+			tfInviation.y = bg.width / 1.4;
+			tfInviation.height = 100;
+			tfInviation.width = 600;
+			tfInviation.multiline = true;
+			tfInviation.wordWrap = true;
+			tfInviation.mouseEnabled = false;
+			tfInviation.defaultTextFormat = format;
+			tfInviation.text = Language.getText(Language.FEEDBACK);
 			
 			// добавление элементов на экран
 			addChild(bg);
 			addChild(tfResult);
 			addChild(backButton);
+			addChild(feedbackButton);
+			addChild(tfInviation);
 			var puzzle:PuzzleApp = new PuzzleApp(bg.width / 3, bg.width / 2.6, answer, "hight");
 			
 			addChild(puzzle);
 		}
 		
 		private function handlerButton(Event:MouseEvent):void {	
-			this.removeChildren();
-			addChild(new MainMenu());
+			
+			if (Event.target == feedbackButton) {
+				var url:String = 'http://www.mukmig.yaroslavl.ru/?menu0705';
+				var request:URLRequest = new URLRequest(url);
+				navigateToURL(request);
+			} else {
+				this.removeChildren();
+				addChild(new MainMenu());
+			}
+			
 		}
 	}
 

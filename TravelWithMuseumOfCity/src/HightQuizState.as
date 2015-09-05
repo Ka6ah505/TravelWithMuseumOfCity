@@ -199,7 +199,7 @@ package
 			pic.load(new URLRequest(content[numberQuestion].getPic()));
 			pic.x = bg.width/3;
 			pic.y = bg.height / 2.5 - 100;
-			addChild(pic)
+			addChild(pic);
 		}
 		
 		public function init():void {
@@ -238,11 +238,11 @@ package
 			answerButtonB.y = bg.width / 1.9;
 			answerButtonB.height = 35;
 			answerButtonB.width = bg.width / 3;
-			answerButtonC.x = 50 ;
+			answerButtonC.x = 50;
 			answerButtonC.y = bg.width / 1.9 + 40;
 			answerButtonC.height = 35;
 			answerButtonC.width = bg.width / 3;
-			answerButtonD.x = 2*bg.width/3 - 50;;
+			answerButtonD.x = 2*bg.width/3 - 50;
 			answerButtonD.y = bg.width / 1.9 + 40;
 			answerButtonD.height = 35;
 			answerButtonD.width = bg.width / 3;

@@ -104,7 +104,7 @@ package
 			for ( var i:int = 0; i < 20; i++ ) {
 				addChild(flagRU[i]);
 				addChild(flagEU[i]);
-				addChild(flagDE[i]);
+				//addChild(flagDE[i]);
 				flagRU[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto1);
 				flagEU[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto2);
 				//flagDE[i].addEventListener(MouseEvent.MOUSE_UP, handlerButto3);
